@@ -1,0 +1,1448 @@
+[
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Szia! Üdvözöl a Pacman Flipper!",
+    "tts": "Szia! Üdvözöl a Pekmen Flipper!"
+  },
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Szia! Játsszunk együtt!",
+    "tts": "Szia! Játsszunk együtt!"
+  },
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Szervusz! Ma Pacmannel játszunk!",
+    "tts": "Szervusz! Ma Pekmennel játszunk!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!",
+    "tts": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "Indítsd el a labdát a hosszú gombbal! Az ütőket a nyilakkal mozgasd!",
+    "tts": "Indítsd el a labdát a hosszú gombbal! Az ütőket a nyilakkal mozgasd!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Nyomd meg a szóközt!",
+    "tts": "Nyomd meg a szóközt!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Nyomd meg a hosszú gombot!",
+    "tts": "Nyomd meg a hosszú gombot!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Indítsd el! Nyomd a szóközt!",
+    "tts": "Indítsd el! Nyomd a szóközt!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Nyomd a nyilakat, és az ütők felugranak!",
+    "tts": "Nyomd a nyilakat, és az ütők felugranak!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Próbáld ki a bal és a jobb nyilat!",
+    "tts": "Próbáld ki a bal és a jobb nyilat!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Üsd vissza a labdát az ütőkkel!",
+    "tts": "Üsd vissza a labdát az ütőkkel!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Jöhet a labda!",
+    "tts": "Jöhet a labda!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Készen állsz?",
+    "tts": "Készen állsz?"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Itt a következő labda!",
+    "tts": "Itt a következő labda!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Új labda vár rád!",
+    "tts": "Új labda vár rád!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Hajrá!",
+    "tts": "Hajrá!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Indul!",
+    "tts": "Indul!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Repül!",
+    "tts": "Repül!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Hopp!",
+    "tts": "Hopp!"
+  },
+  {
+    "cat": "ball_2",
+    "who": "noemi",
+    "text": "Második labda!",
+    "tts": "Második labda!"
+  },
+  {
+    "cat": "ball_2",
+    "who": "noemi",
+    "text": "Jön a második labda!",
+    "tts": "Jön a második labda!"
+  },
+  {
+    "cat": "ball_3",
+    "who": "noemi",
+    "text": "Harmadik labda!",
+    "tts": "Harmadik labda!"
+  },
+  {
+    "cat": "ball_3",
+    "who": "noemi",
+    "text": "Jön a harmadik labda!",
+    "tts": "Jön a harmadik labda!"
+  },
+  {
+    "cat": "ball_4",
+    "who": "noemi",
+    "text": "Negyedik labda!",
+    "tts": "Negyedik labda!"
+  },
+  {
+    "cat": "ball_4",
+    "who": "noemi",
+    "text": "Jön a negyedik labda!",
+    "tts": "Jön a negyedik labda!"
+  },
+  {
+    "cat": "ball_5",
+    "who": "noemi",
+    "text": "Ötödik labda!",
+    "tts": "Ötödik labda!"
+  },
+  {
+    "cat": "ball_5",
+    "who": "noemi",
+    "text": "Jön az ötödik labda!",
+    "tts": "Jön az ötödik labda!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "Az utolsó labda! Hajrá!",
+    "tts": "Az utolsó labda! Hajrá!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "Ez az utolsó labdád! Hajrá, ügyes vagy!",
+    "tts": "Ez az utolsó labdád! Hajrá, ügyes vagy!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "Utolsó labda! Mutasd meg, mit tudsz!",
+    "tts": "Utolsó labda! Mutasd meg, mit tudsz!"
+  },
+  {
+    "cat": "balls_left_1",
+    "who": "noemi",
+    "text": "Még egy labdád van.",
+    "tts": "Még egy labdád van."
+  },
+  {
+    "cat": "balls_left_1",
+    "who": "noemi",
+    "text": "Egy labdád maradt még.",
+    "tts": "Egy labdád maradt még."
+  },
+  {
+    "cat": "balls_left_2",
+    "who": "noemi",
+    "text": "Még két labdád van.",
+    "tts": "Még két labdád van."
+  },
+  {
+    "cat": "balls_left_2",
+    "who": "noemi",
+    "text": "Két labdád maradt még.",
+    "tts": "Két labdád maradt még."
+  },
+  {
+    "cat": "balls_left_3",
+    "who": "noemi",
+    "text": "Még három labdád van.",
+    "tts": "Még három labdád van."
+  },
+  {
+    "cat": "balls_left_3",
+    "who": "noemi",
+    "text": "Három labdád maradt még.",
+    "tts": "Három labdád maradt még."
+  },
+  {
+    "cat": "balls_left_4",
+    "who": "noemi",
+    "text": "Még négy labdád van.",
+    "tts": "Még négy labdád van."
+  },
+  {
+    "cat": "balls_left_4",
+    "who": "noemi",
+    "text": "Négy labdád maradt még.",
+    "tts": "Négy labdád maradt még."
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Hahaha!",
+    "tts": "Ha ha ha!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Hoppá!",
+    "tts": "Hoppá!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Itt vagyok!",
+    "tts": "Itt vagyok!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Hé, ügyes!",
+    "tts": "Hé, ügyes!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Juhú!",
+    "tts": "Juhú!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Ez jó volt!",
+    "tts": "Ez jó volt!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Bumm!",
+    "tts": "Bumm!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Gyere még!",
+    "tts": "Gyere még!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Hihi!",
+    "tts": "Hihi!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Hihihi!",
+    "tts": "Hihihi!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Jaj, csiklandós vagyok!",
+    "tts": "Jaj, csiklandós vagyok!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Jaj, csiklandozol!",
+    "tts": "Jaj, csiklandozol!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Csiki-csuki!",
+    "tts": "Csiki csuki!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Jaj, kacagok!",
+    "tts": "Jaj, kacagok!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Még, még!",
+    "tts": "Még, még!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Jaj, de jó!",
+    "tts": "Jaj, de jó!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Hűha, pörgök!",
+    "tts": "Hűha, pörgök!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Jaj, jaj!",
+    "tts": "Jaj, jaj!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Hűha!",
+    "tts": "Hűha!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Megszédültem!",
+    "tts": "Megszédültem!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Hű, megpördültem!",
+    "tts": "Hű, megpördültem!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Jaj, billegek!",
+    "tts": "Jaj, billegek!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Hoppsza!",
+    "tts": "Hoppsza!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Bocsi!",
+    "tts": "Bocsi!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Kuku!",
+    "tts": "Kuku!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Kukucs!",
+    "tts": "Kukucs!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Bújócskázunk?",
+    "tts": "Bújócskázunk?"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Szia, én Nóri vagyok!",
+    "tts": "Szia, én Nóri vagyok!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Csak kukucskálok.",
+    "tts": "Csak kukucskálok."
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "piri",
+    "text": "Jaj, elkaptál!",
+    "tts": "Jaj, elkaptál!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "rozi",
+    "text": "Hihi, megfogtál!",
+    "tts": "Hihi, megfogtál!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "kiki",
+    "text": "Ó, csillagokat látok!",
+    "tts": "Ó, csillagokat látok!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "piri",
+    "text": "Hűha, ügyes vagy!",
+    "tts": "Hűha, ügyes vagy!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "rozi",
+    "text": "Jaj, megszédültem!",
+    "tts": "Jaj, megszédültem!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "kiki",
+    "text": "Jaj, forog a világ!",
+    "tts": "Jaj, forog a világ!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Három találat egymás után!",
+    "tts": "Három találat egymás után!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Három! Csak így tovább!",
+    "tts": "Három! Csak így tovább!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Hű, három találat!",
+    "tts": "Hű, három találat!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Öt találat! Szuper!",
+    "tts": "Öt találat! Szuper!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Öt egymás után! Nahát!",
+    "tts": "Öt egymás után! Nahát!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Már öt találat! Ez remek!",
+    "tts": "Már öt találat! Ez remek!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Tíz találat! Fantasztikus!",
+    "tts": "Tíz találat! Fantasztikus!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Tíz egymás után! Bravó!",
+    "tts": "Tíz egymás után! Bravó!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Tíz! Te vagy a bajnok!",
+    "tts": "Tíz! Te vagy a bajnok!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Nyam, nyam!",
+    "tts": "Nyam, nyam!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Nyam!",
+    "tts": "Nyam!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Finom!",
+    "tts": "Finom!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Nyami!",
+    "tts": "Nyami!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Nyam-nyam-nyam!",
+    "tts": "Nyam, nyam, nyam!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Ó, de finom pötty!",
+    "tts": "Ó, de finom pötty!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Még éhes vagyok!",
+    "tts": "Még éhes vagyok!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Kék szellemek! Kapd el őket!",
+    "tts": "Kék szellemek! Kapd el őket!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Szédülnek a szellemek!",
+    "tts": "Szédülnek a szellemek!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Kapd el a kék szellemeket!",
+    "tts": "Kapd el a kék szellemeket!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Nézd, kék szellemek!",
+    "tts": "Nézd, kék szellemek!"
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "A szellemek újra vidámak!",
+    "tts": "A szellemek újra vidámak!"
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "Felébredtek!",
+    "tts": "Felébredtek!"
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "Elmúlt a szédülés!",
+    "tts": "Elmúlt a szédülés!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "Cseresznye! Nyam!",
+    "tts": "Cseresznye! Nyam!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "Ó, cseresznye! Finom!",
+    "tts": "Ó, cseresznye! Finom!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "Piros cseresznye! Hurrá!",
+    "tts": "Piros cseresznye! Hurrá!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "Eper! Nyam!",
+    "tts": "Eper! Nyam!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "Édes eper! Finom!",
+    "tts": "Édes eper! Finom!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "Ó, egy eper! Hurrá!",
+    "tts": "Ó, egy eper! Hurrá!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Narancs! Nyam!",
+    "tts": "Narancs! Nyam!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Nézd, narancs! Finom!",
+    "tts": "Nézd, narancs! Finom!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Juhú, narancs!",
+    "tts": "Juhú, narancs!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "Alma! Nyam!",
+    "tts": "Alma! Nyam!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "Ropogós alma! Finom!",
+    "tts": "Ropogós alma! Finom!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "Ó, egy alma! Hurrá!",
+    "tts": "Ó, egy alma! Hurrá!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Körte! Nyam!",
+    "tts": "Körte! Nyam!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Ó, édes körte! Finom!",
+    "tts": "Ó, édes körte! Finom!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Juhú, körte!",
+    "tts": "Juhú, körte!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Szőlő! Nyam!",
+    "tts": "Szőlő! Nyam!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Ó, szőlő! Finom!",
+    "tts": "Ó, szőlő! Finom!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Édes szőlő! Hurrá!",
+    "tts": "Édes szőlő! Hurrá!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "Minden pötty elfogyott!",
+    "tts": "Minden pötty elfogyott!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "Elfogyott, jön a gyümölcs!",
+    "tts": "Elfogyott, jön a gyümölcs!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "Bravó, minden pöttyöt megetted!",
+    "tts": "Bravó, minden pöttyöt megetted!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Forog, forog!",
+    "tts": "Forog, forog!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Pörög!",
+    "tts": "Pörög!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Hűha, forog!",
+    "tts": "Hűha, forog!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Pörög, mint a búgócsiga!",
+    "tts": "Pörög, mint a búgócsiga!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Alagút!",
+    "tts": "Alagút!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Hopp, átsuhantunk!",
+    "tts": "Hopp, átsuhantunk!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Átbújtunk az alagúton!",
+    "tts": "Átbújtunk az alagúton!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Hová jutunk ki?",
+    "tts": "Hová jutunk ki?"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Szellemház!",
+    "tts": "Szellemház!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Bent vagyunk a szellemházban!",
+    "tts": "Bent vagyunk a szellemházban!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Kopp, kopp, szellemház!",
+    "tts": "Kopp, kopp, szellemház!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Hoppá, beestünk a házba!",
+    "tts": "Hoppá, beestünk a házba!"
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "A labda vár, jön a másik!",
+    "tts": "A labda vár, jön a másik!"
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "Bent maradt! Jön a következő!",
+    "tts": "Bent maradt! Jön a következő!"
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "A házban vár, jön a másik!",
+    "tts": "A házban vár, jön a másik!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Két labda! Figyelj mindkettőre!",
+    "tts": "Két labda! Figyelj mindkettőre!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Nahát, két labda van!",
+    "tts": "Nahát, két labda van!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Két labda! De jó!",
+    "tts": "Két labda! De jó!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Kettő lett a labdából!",
+    "tts": "Kettő lett a labdából!"
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "Egy labda maradt.",
+    "tts": "Egy labda maradt."
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "Már csak egy labda pattog.",
+    "tts": "Már csak egy labda pattog."
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "Vége a dupla játéknak.",
+    "tts": "Vége a dupla játéknak."
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "Mind a három világít! Szuper!",
+    "tts": "Mind a három világít! Szuper!"
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "Megvan mind a három!",
+    "tts": "Megvan mind a három!"
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "Kész a szorzó! Ügyes vagy!",
+    "tts": "Kész a szorzó! Ügyes vagy!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Duplázó! Kétszeres pontok!",
+    "tts": "Duplázó! Kétszeres pontok!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Dupla pontok! Ügyes!",
+    "tts": "Dupla pontok! Ügyes!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Minden pont kétszer annyit ér!",
+    "tts": "Minden pont kétszer annyit ér!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Háromszoros pontok!",
+    "tts": "Háromszoros pontok!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Hármas szorzó! Nagyszerű!",
+    "tts": "Hármas szorzó! Nagyszerű!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Minden pont háromszor annyit ér!",
+    "tts": "Minden pont háromszor annyit ér!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Négyszeres pontok!",
+    "tts": "Négyszeres pontok!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Négyes szorzó! Hűha!",
+    "tts": "Négyes szorzó! Hűha!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Minden pont négyszer annyit ér!",
+    "tts": "Minden pont négyszer annyit ér!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Ötszörös pontok!",
+    "tts": "Ötszörös pontok!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Ötös szorzó! Ennél több már nem lehet!",
+    "tts": "Ötös szorzó! Ennél több már nem lehet!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Minden pont ötször annyit ér!",
+    "tts": "Minden pont ötször annyit ér!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Meglepetés!",
+    "tts": "Meglepetés!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Hűha, meglepetés!",
+    "tts": "Hűha, meglepetés!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "Nagy ütők! Az ütők megnőttek!",
+    "tts": "Nagy ütők! Az ütők megnőttek!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "Óriás ütők! Nagyon nagyok lettek!",
+    "tts": "Óriás ütők! Nagyon nagyok lettek!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "Megnőttek az ütők, könnyebb lesz!",
+    "tts": "Megnőttek az ütők, könnyebb lesz!"
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "Lassú labda! Lebeg, mint egy felhő.",
+    "tts": "Lassú labda! Lebeg, mint egy felhő."
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "Lassú labda! Nézd, hogyan lebeg!",
+    "tts": "Lassú labda! Nézd, hogyan lebeg!"
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "Puhán lebeg a labda, mint egy felhő.",
+    "tts": "Puhán lebeg a labda, mint egy felhő."
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Lufieső! Pukkaszd ki a lufikat!",
+    "tts": "Lufieső! Pukkaszd ki a lufikat!"
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Lufik jönnek! Érintsd meg őket a labdával!",
+    "tts": "Lufik jönnek! Érintsd meg őket a labdával!"
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Nézd a lufikat! Pukkaszd ki őket!",
+    "tts": "Nézd a lufikat! Pukkaszd ki őket!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Gyümölcsvásár! Szedd össze a gyümölcsöket!",
+    "tts": "Gyümölcsvásár! Szedd össze a gyümölcsöket!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Gyümölcsök jöttek! Gyűjtsd össze mindet!",
+    "tts": "Gyümölcsök jöttek! Gyűjtsd össze mindet!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Finom gyümölcsök! Gurítsd rájuk a labdát!",
+    "tts": "Finom gyümölcsök! Gurítsd rájuk a labdát!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "Szellemtánc! Dupla pont a szellemekre!",
+    "tts": "Szellemtánc! Dupla pont a szellemekre!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "Táncolnak a szellemek! Kétszeres pontot adnak!",
+    "tts": "Táncolnak a szellemek! Kétszeres pontot adnak!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "Tánc van! Találd el a szellemeket, dupla pont jár!",
+    "tts": "Tánc van! Találd el a szellemeket, dupla pont jár!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "Pacman vigyáz rád! Nem veszhet el a labda!",
+    "tts": "Pekmen vigyáz rád! Nem veszhet el a labda!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "Pajzs! Pacman vigyáz a labdára!",
+    "tts": "Pajzs! Pekmen vigyáz a labdára!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "Most nem veszhet el a labda, Pacman vigyáz!",
+    "tts": "Most nem veszhet el a labda, Pekmen vigyáz!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "Ajándék labda! Még egy labdát kaptál!",
+    "tts": "Ajándék labda! Még egy labdát kaptál!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "Ajándékba még egy labda! Hurrá!",
+    "tts": "Ajándékba még egy labda! Hurrá!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "Meglepetés, kaptál még egy labdát!",
+    "tts": "Meglepetés, kaptál még egy labdát!"
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "Vége a meglepetésnek.",
+    "tts": "Vége a meglepetésnek."
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "Ennyi volt a meglepetés!",
+    "tts": "Ennyi volt a meglepetés!"
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "Kész a meglepetés, játsszunk tovább!",
+    "tts": "Kész a meglepetés, játsszunk tovább!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Puk!",
+    "tts": "Puk!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Pukk, pukk!",
+    "tts": "Pukk, pukk!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Pukkan a lufi!",
+    "tts": "Pukkan a lufi!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Kipukkadt!",
+    "tts": "Kipukkadt!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Csillag!",
+    "tts": "Csillag!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Egy csillag!",
+    "tts": "Egy csillag!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Nézd, csillag!",
+    "tts": "Nézd, csillag!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Csillámlik!",
+    "tts": "Csillámlik!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "pekmen",
+    "text": "Semmi baj! Itt vagyok!",
+    "tts": "Semmi baj! Itt vagyok!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "pekmen",
+    "text": "Nyam! Elkaptalak!",
+    "tts": "Nyam! Elkaptalak!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "noemi",
+    "text": "Megmentett Pacman!",
+    "tts": "Megmentett Pekmen!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "noemi",
+    "text": "Pacman elkapta a labdát!",
+    "tts": "Pekmen elkapta a labdát!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Elgurult! Semmi baj!",
+    "tts": "Elgurult! Semmi baj!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Jaj, semmi baj!",
+    "tts": "Jaj, semmi baj!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Nem baj, jön a következő!",
+    "tts": "Nem baj, jön a következő!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Nem baj, ügyes voltál!",
+    "tts": "Nem baj, ügyes voltál!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Semmi baj, mehetünk tovább!",
+    "tts": "Semmi baj, mehetünk tovább!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Ügyes vagy!",
+    "tts": "Ügyes vagy!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Szuper!",
+    "tts": "Szuper!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Nagyszerű!",
+    "tts": "Nagyszerű!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Bravó!",
+    "tts": "Bravó!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Ez remek volt!",
+    "tts": "Ez remek volt!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Ez az!",
+    "tts": "Ez az!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Nagyon jó!",
+    "tts": "Nagyon jó!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Hű, de ügyes vagy!",
+    "tts": "Hű, de ügyes vagy!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "Segítünk egy kicsit!",
+    "tts": "Segítünk egy kicsit!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "Hopp, egy kis lökés!",
+    "tts": "Hopp, egy kis lökés!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "Kis segítség, és megy tovább!",
+    "tts": "Kis segítség, és megy tovább!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "Vége a játéknak! Nagyon ügyes voltál!",
+    "tts": "Vége a játéknak! Nagyon ügyes voltál!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "Ez volt az utolsó labda. Remekül játszottál!",
+    "tts": "Ez volt az utolsó labda. Remekül játszottál!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "Vége! Nagyon jól ment!",
+    "tts": "Vége! Nagyon jól ment!"
+  },
+  {
+    "cat": "over_stars_1",
+    "who": "noemi",
+    "text": "Egy csillagot kaptál! Szép volt!",
+    "tts": "Egy csillagot kaptál! Szép volt!"
+  },
+  {
+    "cat": "over_stars_1",
+    "who": "noemi",
+    "text": "Egy csillag a tiéd! Jól sikerült!",
+    "tts": "Egy csillag a tiéd! Jól sikerült!"
+  },
+  {
+    "cat": "over_stars_2",
+    "who": "noemi",
+    "text": "Két csillagot kaptál! Szép játék!",
+    "tts": "Két csillagot kaptál! Szép játék!"
+  },
+  {
+    "cat": "over_stars_2",
+    "who": "noemi",
+    "text": "Két csillag! Szép munka!",
+    "tts": "Két csillag! Szép munka!"
+  },
+  {
+    "cat": "over_stars_3",
+    "who": "noemi",
+    "text": "Három csillag! Te vagy a bajnok!",
+    "tts": "Három csillag! Te vagy a bajnok!"
+  },
+  {
+    "cat": "over_stars_3",
+    "who": "noemi",
+    "text": "Három csillagot kaptál! Fantasztikus vagy!",
+    "tts": "Három csillagot kaptál! Fantasztikus vagy!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "Új rekord! Nahát, ez nagyszerű!",
+    "tts": "Új rekord! Nahát, ez nagyszerű!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "Ez új rekord! Bravó!",
+    "tts": "Ez új rekord! Bravó!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "Megdöntötted a rekordot! Hurrá!",
+    "tts": "Megdöntötted a rekordot! Hurrá!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "Még egyet? Nyomd meg a szóközt!",
+    "tts": "Még egyet? Nyomd meg a szóközt!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "Játsszunk még! Nyomd meg a szóközt!",
+    "tts": "Játsszunk még! Nyomd meg a szóközt!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "Szeretnél még játszani? Nyomd meg a szóközt!",
+    "tts": "Szeretnél még játszani? Nyomd meg a szóközt!"
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "Szünet!",
+    "tts": "Szünet!"
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "Pihenő! Mindjárt folytatjuk.",
+    "tts": "Pihenő! Mindjárt folytatjuk."
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "Megállt a játék.",
+    "tts": "Megállt a játék."
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Folytatjuk!",
+    "tts": "Folytatjuk!"
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Mehet tovább!",
+    "tts": "Mehet tovább!"
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Hajrá, tovább!",
+    "tts": "Hajrá, tovább!"
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "Sokat játszottunk! Ez az utolsó labda, aztán elköszönök, hogy ne ülj annyit a gép előtt.",
+    "tts": "Sokat játszottunk! Ez az utolsó labda, aztán elköszönök, hogy ne ülj annyit a gép előtt.",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "Nagyon ügyes vagy! Ez az utolsó labda, utána elköszönök, hogy egy kicsit pihenhess.",
+    "tts": "Nagyon ügyes vagy! Ez az utolsó labda, utána elköszönök, hogy egy kicsit pihenhess.",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "Hűha, de sokat játszottunk! Ez az utolsó labda, aztán elköszönök, és pihenünk.",
+    "tts": "Hűha, de sokat játszottunk! Ez az utolsó labda, aztán elköszönök, és pihenünk.",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "Jó volt veled játszani! Elköszönök. Később folytatjuk, addig segíts a szüleidnek! Szia!",
+    "tts": "Jó volt veled játszani! Elköszönök. Később folytatjuk, addig segíts a szüleidnek! Szia!",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "Szia! Nagyon jó volt! Később folytatjuk, addig menj, és segíts a szüleidnek!",
+    "tts": "Szia! Nagyon jó volt! Később folytatjuk, addig menj, és segíts a szüleidnek!",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "Most elköszönök. Köszönöm a játékot! Később folytatjuk, addig segíts a szüleidnek! Pá-pá!",
+    "tts": "Most elköszönök. Köszönöm a játékot! Később folytatjuk, addig segíts a szüleidnek! Pá, pá!",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Most pihenünk. Később folytatjuk! Menj, segíts a szüleidnek!",
+    "tts": "Most pihenünk. Később folytatjuk! Menj, segíts a szüleidnek!",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Szia, szia! Később folytatjuk. Addig segíts a szüleidnek!",
+    "tts": "Szia, szia! Később folytatjuk. Addig segíts a szüleidnek!",
+    "rate": -10,
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Most pihenünk egy kicsit. Menj, segíts a szüleidnek, később játszunk!",
+    "tts": "Most pihenünk egy kicsit. Menj, segíts a szüleidnek, később játszunk!",
+    "rate": -10,
+    "vol": 0.5
+  }
+]

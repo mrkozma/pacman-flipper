@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="hu"><head><meta charset="utf-8"><title>Billentyű-próba</title>
+<style>body{font:15px/1.4 Consolas,monospace;background:#111;color:#eee;margin:16px}pre{white-space:pre-wrap}b{color:#ffd84a}</style></head>
+<body>
+<p><b>Billentyű-próba.</b> Kattints ide egyszer, aztán próbáld: tartsd lenyomva a BAL Ctrl-t, majd nyomd le a JOBB Ctrl-t, aztán engedd fel az egyiket, majd a másikat.
+Az újabb sor van felül. Másold ide a sorokat, ha a játék mégsem működik.</p>
+<pre id="o"></pre>
+<script>
+var o = document.getElementById('o'), lines = [], t0 = performance.now();
+function log(e) {
+  var s = ((e.timeStamp - 0) / 1000).toFixed(3) + '  ' + e.type.padEnd(7) + ' code=' + String(e.code).padEnd(13) + ' key=' + String(e.key).padEnd(9) +
+    ' location=' + e.location + ' repeat=' + e.repeat + ' ctrlKey=' + e.ctrlKey + ' altKey=' + e.altKey;
+  lines.unshift(s); if (lines.length > 40) lines.pop(); o.textContent = lines.join('\n');
+  if (e.key === 'Control' || e.key === 'Tab') e.preventDefault();
+}
+addEventListener('keydown', log); addEventListener('keyup', log);
+</script></body></html>

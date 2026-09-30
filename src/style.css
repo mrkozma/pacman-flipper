@@ -1,0 +1,4 @@
+html, body { margin: 0; height: 100%; background: #0d1533; overflow: hidden; }
+canvas { display: block; width: 100vw; height: 100vh; height: 100dvh; touch-action: none; outline: none; -webkit-tap-highlight-color: transparent; user-select: none; }
+/* Only shown when JavaScript is off (the browser hides noscript otherwise). The canvas fills the page, so the text is centred over it. */
+noscript { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; text-align: center; font: 600 clamp(18px, 4vw, 28px)/1.4 Fredoka, sans-serif; color: #fff8e7; }
