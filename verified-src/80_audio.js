@@ -1,4 +1,4 @@
-/* 80_audio.js: sound engine, synthesized SFX, original music, Hungarian voice player. Browser only.
+/* 80_audio.js: sound engine, synthesized SFX, original music, voice player (the voice pack of PM.LANG). Browser only.
    Replaces the silent PM.Audio stand-in from 00_ns.js (API: SPEC 4.5).
 
    Layout of this file:
@@ -933,10 +933,15 @@
   }
 
   // ---- voice
+  // The pack is window.PM_VOICES[PM.LANG] (tools/build.py embeds one {manifest, files} per language); an older build has only
+  // window.PM_VOICE, which is Hungarian. A language without a pack stays silent: never Hungarian speech under English text.
+  // Music and SFX do not depend on the language.
   function loadVoices() {
     if (V.promise) return V.promise;
     V.promise = (async () => {
-      const data = g.PM_VOICE;
+      const all = g.PM_VOICES;
+      const lang = (PM && PM.LANG) || 'hu';
+      const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);
       if (!data || !data.manifest || !data.files || !ensureCtx()) return;
       const cats = data.manifest.cats || {};
       const decoded = {};

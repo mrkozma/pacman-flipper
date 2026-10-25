@@ -84,4 +84,13 @@
       parents: 'Szülőknek: új játékhoz töltsd újra az oldalt (F5).'
     }
   });
+  // ---- appended by the English version (lang, SPEC 6b): keys that every language has (English: 07_strings_en.js).
+  // aria_label is the canvas label (90_main.js sets it in boot(), so it is the aria-label of index.template.html letter for letter),
+  // fatal_missing the first line of the missing module screen (90_main.js), num_sep groups the thousands of a score (fmtNum in
+  // 70_render.js): a no-break space, so the text wrapping of 70_render.js never splits 12 500.
+  Object.assign(PM.T, {
+    aria_label: 'Pacman flipper játék',
+    fatal_missing: 'Pacman Flipper: hiányzó modul',
+    num_sep: '\u00a0'
+  });
 })(typeof globalThis !== 'undefined' ? globalThis : window);
