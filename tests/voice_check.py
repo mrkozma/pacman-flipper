@@ -4,8 +4,10 @@
 Usage: python tests/voice_check.py [--verbose]
 Exit code 1 when any check fails. Warnings never fail the run.
 All files are read as UTF-8; the report is printed with a safe fallback for consoles that cannot show Hungarian letters.
+The Hungarian voice is frozen (SPEC 4.6): the manifest and every mp3 must match assets/voice/FROZEN.sha256 (the published clips).
 """
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -213,6 +215,29 @@ def main():
     for name in sorted(os.listdir(VOICE)):
         if name.endswith('.mp3') and name not in listed:
             err('orphan mp3 not in the manifest: %s' % name)
+
+    # The frozen Hungarian voice: the manifest and every mp3 byte for byte as listed in FROZEN.sha256 (shasum -a 256 format).
+    frozen = os.path.join(VOICE, 'FROZEN.sha256')
+    if not os.path.exists(frozen):
+        err('assets/voice/FROZEN.sha256 is missing (the Hungarian voice is frozen)')
+    else:
+        want = {}
+        with open(frozen, 'r', encoding='utf-8') as f:
+            for line in f:
+                if line.strip():
+                    h, name = line.rstrip('\n').split('  ', 1)
+                    want[name] = h
+        have = set(n for n in os.listdir(VOICE) if n.endswith('.mp3') or n == 'manifest.json')
+        for name in sorted(have | set(want)):
+            p = os.path.join(VOICE, name)
+            if name not in want:
+                err('frozen voice: %s is not in FROZEN.sha256' % name)
+            elif name not in have:
+                err('frozen voice: %s is missing' % name)
+            else:
+                with open(p, 'rb') as f:
+                    if hashlib.sha256(f.read()).hexdigest() != want[name]:
+                        err('frozen voice: %s differs from FROZEN.sha256' % name)
 
     if total > MAX_TOTAL_BYTES:
         err('total mp3 size %.2f MB is over the %.0f MB budget' % (total / 1048576.0, MAX_TOTAL_BYTES / 1048576.0))

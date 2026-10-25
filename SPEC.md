@@ -304,6 +304,17 @@ phase 2 of `ENGLISH-PLAN.md`; the English scripts will live in `tools/en/`).
 `window.PM_VOICE = window.PM_VOICES.hu || null` (the old single-pack name, read by `src/80_audio.js` and older tests);
 `--no-voice` gives `window.PM_VOICES = null; window.PM_VOICE = null`. Only the pack of `PM.LANG` is decoded.
 
+**The Hungarian voice is frozen** (the owner's decision, 2026-10-25). `assets/voice/` holds exactly the 241 clips and the manifest of the
+published page (`docs/index.html`), byte for byte, and `assets/voice/FROZEN.sha256` lists their sha256 (`shasum -a 256 -c FROZEN.sha256`
+checks them by hand). `tests/voice_check.py` fails when any of these files differs, is missing, or an unlisted mp3 appears.
+`tools/gen_voice.py` refuses to run without `--unfreeze-hungarian`, because re-recording cannot reproduce the published clips (the online
+voices change over time); that switch is only for new Hungarian clips the owner explicitly asked for, and FROZEN.sha256 then has to be
+rewritten in the same change. `tools/voice_script.json` describes the frozen clips: 211 entries are unchanged from the earlier script; 30 lines
+that the earlier script no longer had were restored from the published manifest (their `tts` is the `text` with "Pekmen" for "Pacman"); the
+nine `limit_*` entries have no extra `rate`, as their published clips were made at the `pekmen` speaker rate. The unfinished 238-clip draft
+of the 2026-09-30 commit (reworded captions over mostly unchanged audio, slower `limit_*` clips, `howto` and `mystery` shortened) is kept at the
+git tag `hu-voice-draft-2026-09-30`.
+
 ### 4.7 Input and controls (summary)
 
 ArrowLeft or the LEFT Ctrl key = left flipper, ArrowRight or the RIGHT Ctrl key = right flipper (hold to keep the flipper up; the arrows and the Ctrl keys work at the same time and a flipper stays up while either of its two keys is down). Space also works while a Ctrl key is held; other Ctrl combinations (Ctrl+P, Ctrl+F, Ctrl+W) stay browser shortcuts. A Ctrl press never calls the audio unlock (it is not a browser user activation). AltGr on a Hungarian keyboard sends a fake left Ctrl that is cancelled. Space = launch: press pulls the plunger back, release fires;
@@ -388,6 +399,8 @@ missing in English shows the Hungarian text (`08_lang.js` merges the two tables)
 - 2026-09-29 R2: src/style.css canvas height also 100dvh (a phone browser bar no longer hides the bottom touch buttons)
 - 2026-09-29 I: integration only, no interface change. New tests/run_all.js (one command: build, static checks, every test, PASS/FAIL table), tests/integration_browser.js (real keys, audio unlock, music modes, autoplay) and tests/wiring_check.js (sfx and voice names against 80_audio.js and the manifest); render_touch, render_flipper_contact, render_real_perf, render_quality and game_browser now default to dist/pacman-flipper.html instead of dev builds
 - 2026-10-25 lang: phase 1 of ENGLISH-PLAN.md, in verified-src/ (src/ follows later): `?language=en` gives English on-screen text, Hungarian stays the default. New 07_strings_en.js (PM.STRINGS_EN) and 08_lang.js (PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage); PM.T gets aria_label, fatal_missing and num_sep in every language; 90_main.js reads `language`, swaps PM.T in boot() before PM.Render.create(), sets `<html lang>` and the canvas aria-label, the missing module screen uses PM.T.fatal_missing; fmtNum in 70_render.js uses PM.T.num_sep; 80_audio.js loadVoices plays window.PM_VOICES[PM.LANG] (old builds: window.PM_VOICE) and stays silent without a pack for the language; build.py adds --src DIR and --voice-langs and writes window.PM_VOICES (plus the PM_VOICE alias); voice budget 6 MB of mp3 per language; the noscript text is bilingual; new tests/lang_test.js
+
+- 2026-10-25 voice: the Hungarian voice is frozen (4.6). assets/voice/ is again the published 241-clip set (the draft is at the git tag hu-voice-draft-2026-09-30), assets/voice/FROZEN.sha256 lists every file, tests/voice_check.py checks it, tools/gen_voice.py needs --unfreeze-hungarian, tools/voice_script.json describes the published clips, the stale hash cache assets/voice/.cache.json is gone
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 
