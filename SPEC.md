@@ -7,7 +7,9 @@ If you must change an interface, edit this file in the same change and add a lin
 
 A pinball game with a Pac-Man theme for Hungarian children (the target player is a 5-year-old).
 It is delivered as ONE self-contained HTML file: `dist/pacman-flipper.html` (double-click to play in Edge or Chrome,
-no install, no internet needed while playing). All text and all speech are Hungarian.
+no install, no internet needed while playing). Hungarian is the default: all text and all speech are Hungarian.
+The same file also has English on-screen text with `?language=en` (US English, rules in 6b). The English voice pack comes in phase 2
+of `ENGLISH-PLAN.md`; until then English has no voice (music and SFX still play, Hungarian speech never plays under English text).
 
 User requirements (verbatim intent, do not drop any):
 - Right and left arrow keys control the right and left flippers. Space bar launches the ball.
@@ -46,6 +48,8 @@ the global `PM` namespace. The build script concatenates files in filename order
 src/
   00_ns.js            PM namespace, PM.util (rng, clamp, lerp...), null PM.Audio   [frozen, DOM-free]
   05_strings_hu.js    PM.T Hungarian display strings                                [DOM-free]
+  07_strings_en.js    PM.STRINGS_EN English display strings (the keys of PM.T)      [DOM-free]  verified-src/ only until phase 5
+  08_lang.js          PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage     [DOM-free]  verified-src/ only until phase 5
   10_config.js        PM.CFG constants                                              [DOM-free]
   20_physics.js       PM.Physics.World                                              [DOM-free]  owner P
   30_table.js         PM.Table.build()                                              [DOM-free]  owner P
@@ -57,16 +61,22 @@ src/
   90_main.js          boot, loop, input, resize, pause                              [browser]   owner G
   index.template.html, style.css
 assets/
-  voice/              generated mp3 + manifest.json                                              owner V
+  voice/              generated mp3 + manifest.json (Hungarian)                                  owner V
+  voice_en/           the same for English (phase 2)                                             owner V
   fonts/              Family_Weight.woff2 files (e.g. Fredoka_600.woff2)                          owner S
 tools/
-  build.py            python tools/build.py [--out path] [--no-voice]
+  build.py            python tools/build.py [--src src|verified-src] [--out path] [--no-voice] [--voice-langs hu,en]
   gen_voice.py, voice_script*.json                                                               owner V
 tests/
   load.js             loads DOM-free modules (prefix < 60) into a Node vm context: loadPM()
   browser_helper.js   openGame({file, viewport, query}) using Playwright + system Edge
 dist/                 build output. While developing, build to your own file: --out dist/_dev_<yourname>.html
 ```
+
+`verified-src/` has the same layout: it is the published tree (the JavaScript of `docs/index.html`; build it with
+`--src verified-src`). Until phase 5 of `ENGLISH-PLAN.md` the language change (`07_strings_en.js`, `08_lang.js`, `?language=`,
+`PM_VOICES` in `80_audio.js`) exists only there and `src/` is still Hungarian only, so `tests/lang_test.js` runs with
+`PM_SRC=verified-src`.
 
 Rules:
 - Files with numeric prefix < 60 must run in plain Node (no window, no document, no Audio). Test them with `tests/load.js`.
@@ -162,7 +172,11 @@ Ghost ids: `piri` (red), `rozi` (pink), `kiki` (cyan), `nori` (orange, ghost hou
 `90_main.js` boots everything: waits for the font, creates game + render, runs a requestAnimationFrame loop (dt clamped to 1/20 s),
 maps ArrowLeft/ArrowRight/Space (preventDefault, ignore auto-repeat), also touch/mouse (left half = left flipper, right half = right flipper,
 launch button), P/Esc = pause, M = mute, F = fullscreen. Pauses on `visibilitychange`/blur. First user gesture calls `PM.Audio.unlock()` then `loadVoices()`.
-It exposes `window.PM_DEBUG = {PM, game, render}`. URL params: `autoplay=1`, `seed=N`, `debug=1`, `mute=1`, `screen=title|play|over`.
+It exposes `window.PM_DEBUG = {PM, game, render, params, seed}`. URL params: `autoplay=1`, `seed=N`, `debug=1`, `mute=1`, `screen=title|play|over`,
+`language=en` (English text; anything else or missing = Hungarian; read like `perc`: trimmed, case-insensitive, the first two letters count,
+so `EN`, `en-GB` and `en_US` are English; not saved anywhere). `boot()` calls `PM.setLanguage(params.language)` before anything reads
+`PM.T` (`PM.Render.create()` copies it), then sets `<html lang>` and the canvas `aria-label` (`PM.T.aria_label`). `PM_DEBUG.params.language`
+shows the choice.
 
 ### 4.3 Render (owner R)
 
@@ -200,7 +214,8 @@ Contrast must stay good (WCAG AA for text on its background).
 `PM.Audio` (replaces the null object in `00_ns.js`):
 ```
 unlock() -> Promise         // create/resume AudioContext on first gesture
-loadVoices() -> Promise     // decode window.PM_VOICE files (base64 mp3), build the category index from the manifest
+loadVoices() -> Promise     // decode the pack window.PM_VOICES[PM.LANG] (base64 mp3; an older build: window.PM_VOICE, Hungarian only),
+                            // build the category index from its manifest; a language without a pack has no voice
 sfx(name, {vol, rate, pan, x}) // synthesized; `rate` = pitch multiplier, `x` = table x for auto pan; unknown names are ignored
 voice(cat, {priority:0..3, force}) -> bool   // plays a random variant of the category; never overlaps another voice; obeys cooldowns
 voiceBusy(), stopVoice()
@@ -281,8 +296,13 @@ Speaker profiles (V tunes them and records the settings in `tools/voice_profiles
 `tools/gen_voice.py` reads every `tools/voice_script*.json`, generates `assets/voice/<cat>_<n>.mp3` (skips unchanged clips using a hash cache),
 and writes `assets/voice/manifest.json`:
 `{"cats": {"<cat>": {"priority":n, "cooldown":seconds, "clips":[{"f":"<file>.mp3","who":"noemi","text":"...","dur":1.8}]}}}`.
-Total embedded size target: at most 6 MB of mp3. Clip length: ideally 0.4 to 3.5 s, never more than 8 s.
-`tools/build.py` embeds the files as `window.PM_VOICE = {manifest, files:{"<file>.mp3":"<base64>"}}`.
+Total embedded size target: at most 6 MB of mp3 per language. Clip length: ideally 0.4 to 3.5 s, never more than 8 s.
+One folder per language with the same layout and the same category ids: `assets/voice/` (Hungarian) and `assets/voice_en/` (English,
+phase 2 of `ENGLISH-PLAN.md`; the English scripts will live in `tools/en/`).
+`tools/build.py` embeds every language whose `manifest.json` exists (or the `--voice-langs` list) as
+`window.PM_VOICES = {"hu": {manifest, files:{"<file>.mp3":"<base64>"}}, "en": {...}}` plus the alias
+`window.PM_VOICE = window.PM_VOICES.hu || null` (the old single-pack name, read by `src/80_audio.js` and older tests);
+`--no-voice` gives `window.PM_VOICES = null; window.PM_VOICE = null`. Only the pack of `PM.LANG` is decoded.
 
 ### 4.7 Input and controls (summary)
 
@@ -336,6 +356,16 @@ Address the child informally (tegezés), simple words, short sentences, warm ton
 gender for "te", so lines fit any child. Say "Pekmen" in `tts`, "Pacman" on screen. No English words except the game name.
 Spoken numbers as words. Keep lines varied so repetition does not become annoying. All strings displayed on screen live in `PM.T` (`src/05_strings_hu.js`).
 
+## 6b. English language rules (`?language=en`)
+
+US English. Address the child informally as "you", simple words, short sentences, warm tone, at most one exclamation mark per sentence.
+No em dashes and no en dashes (use commas, periods, exclamation marks). Spoken numbers as words. Lines follow the intent of the Hungarian
+ones, not a word-for-word translation. The game name stays "Pacman Flipper", the ghost names stay (Piri, Rozi, Kiki, Nori).
+The on-screen English lives in `PM.STRINGS_EN` (`07_strings_en.js`): exactly the keys of the Hungarian `PM.T` including `.r`, in the
+same order, with the same `{n}` placeholders and `''` exactly where the Hungarian has `''` (`tests/lang_test.js` checks it). A key
+missing in English shows the Hungarian text (`08_lang.js` merges the two tables). Scores group thousands with `PM.T.num_sep`
+(`,` in English, a no-break space in Hungarian).
+
 ## 7. Quality bar and test plan
 
 - `python tools/build.py` succeeds; the built file opens in headless Edge with zero console errors and zero page errors.
@@ -357,6 +387,7 @@ Spoken numbers as words. Keep lines varied so repetition does not become annoyin
 - 2026-09-29 R2: 70_render.js now reads the t of power, surprise, banner and popups as elapsed seconds only (the up or down guess flickered for one frame when the game reset a running timer); it also draws state.locked (golden ring on the ghost house) and adds PM.T.r.hint_flippers_touch. Two small integration fixes outside my files: 40_game.js debug.forceScreen('over') keeps a score set before it (so ?screen=over shows the score), 90_main.js starts in touch mode when matchMedia('(pointer: coarse)') matches (touch texts and buttons before the first touch).
 - 2026-09-29 R2: src/style.css canvas height also 100dvh (a phone browser bar no longer hides the bottom touch buttons)
 - 2026-09-29 I: integration only, no interface change. New tests/run_all.js (one command: build, static checks, every test, PASS/FAIL table), tests/integration_browser.js (real keys, audio unlock, music modes, autoplay) and tests/wiring_check.js (sfx and voice names against 80_audio.js and the manifest); render_touch, render_flipper_contact, render_real_perf, render_quality and game_browser now default to dist/pacman-flipper.html instead of dev builds
+- 2026-10-25 lang: phase 1 of ENGLISH-PLAN.md, in verified-src/ (src/ follows later): `?language=en` gives English on-screen text, Hungarian stays the default. New 07_strings_en.js (PM.STRINGS_EN) and 08_lang.js (PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage); PM.T gets aria_label, fatal_missing and num_sep in every language; 90_main.js reads `language`, swaps PM.T in boot() before PM.Render.create(), sets `<html lang>` and the canvas aria-label, the missing module screen uses PM.T.fatal_missing; fmtNum in 70_render.js uses PM.T.num_sep; 80_audio.js loadVoices plays window.PM_VOICES[PM.LANG] (old builds: window.PM_VOICE) and stays silent without a pack for the language; build.py adds --src DIR and --voice-langs and writes window.PM_VOICES (plus the PM_VOICE alias); voice budget 6 MB of mp3 per language; the noscript text is bilingual; new tests/lang_test.js
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 
