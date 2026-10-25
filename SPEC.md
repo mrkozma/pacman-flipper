@@ -284,6 +284,17 @@ and writes `assets/voice/manifest.json`:
 Total embedded size target: at most 6 MB of mp3. Clip length: ideally 0.4 to 3.5 s, never more than 8 s.
 `tools/build.py` embeds the files as `window.PM_VOICE = {manifest, files:{"<file>.mp3":"<base64>"}}`.
 
+**The Hungarian voice is frozen** (the owner's decision, 2026-10-25). `assets/voice/` holds exactly the 241 clips and the manifest of the
+published page (`docs/index.html`), byte for byte, and `assets/voice/FROZEN.sha256` lists their sha256 (`shasum -a 256 -c FROZEN.sha256`
+checks them by hand). `tests/voice_check.py` fails when any of these files differs, is missing, or an unlisted mp3 appears.
+`tools/gen_voice.py` refuses to run without `--unfreeze-hungarian`, because re-recording cannot reproduce the published clips (the online
+voices change over time); that switch is only for new Hungarian clips the owner explicitly asked for, and FROZEN.sha256 then has to be
+rewritten in the same change. `tools/voice_script.json` describes the frozen clips: 211 entries are unchanged from the earlier script; 30 lines
+that the earlier script no longer had were restored from the published manifest (their `tts` is the `text` with "Pekmen" for "Pacman"); the
+nine `limit_*` entries have no extra `rate`, as their published clips were made at the `pekmen` speaker rate. The unfinished 238-clip draft
+of the 2026-09-30 commit (reworded captions over mostly unchanged audio, slower `limit_*` clips, `howto` and `mystery` shortened) is kept at the
+git tag `hu-voice-draft-2026-09-30`.
+
 ### 4.7 Input and controls (summary)
 
 ArrowLeft or the LEFT Ctrl key = left flipper, ArrowRight or the RIGHT Ctrl key = right flipper (hold to keep the flipper up; the arrows and the Ctrl keys work at the same time and a flipper stays up while either of its two keys is down). Space also works while a Ctrl key is held; other Ctrl combinations (Ctrl+P, Ctrl+F, Ctrl+W) stay browser shortcuts. A Ctrl press never calls the audio unlock (it is not a browser user activation). AltGr on a Hungarian keyboard sends a fake left Ctrl that is cancelled. Space = launch: press pulls the plunger back, release fires;
@@ -357,6 +368,8 @@ Spoken numbers as words. Keep lines varied so repetition does not become annoyin
 - 2026-09-29 R2: 70_render.js now reads the t of power, surprise, banner and popups as elapsed seconds only (the up or down guess flickered for one frame when the game reset a running timer); it also draws state.locked (golden ring on the ghost house) and adds PM.T.r.hint_flippers_touch. Two small integration fixes outside my files: 40_game.js debug.forceScreen('over') keeps a score set before it (so ?screen=over shows the score), 90_main.js starts in touch mode when matchMedia('(pointer: coarse)') matches (touch texts and buttons before the first touch).
 - 2026-09-29 R2: src/style.css canvas height also 100dvh (a phone browser bar no longer hides the bottom touch buttons)
 - 2026-09-29 I: integration only, no interface change. New tests/run_all.js (one command: build, static checks, every test, PASS/FAIL table), tests/integration_browser.js (real keys, audio unlock, music modes, autoplay) and tests/wiring_check.js (sfx and voice names against 80_audio.js and the manifest); render_touch, render_flipper_contact, render_real_perf, render_quality and game_browser now default to dist/pacman-flipper.html instead of dev builds
+
+- 2026-10-25 voice: the Hungarian voice is frozen (4.6). assets/voice/ is again the published 241-clip set (the draft is at the git tag hu-voice-draft-2026-09-30), assets/voice/FROZEN.sha256 lists every file, tests/voice_check.py checks it, tools/gen_voice.py needs --unfreeze-hungarian, tools/voice_script.json describes the published clips, the stale hash cache assets/voice/.cache.json is gone
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 

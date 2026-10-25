@@ -30,7 +30,8 @@ Tíz perc aktív játék után Pac-Man előjön, elmondja, hogy ez lesz az utols
 ## Állapot (2026-09-30)
 
 * `docs/index.html` a közzétett, ellenőrzött változat. Ennek a JavaScript-forrása a `verified-src/` mappában van.
-* A `src/` mappa az újabb munkapéldány. Egy minőségellenőrző kör 31 megerősített javítása van benne részben, még nem ellenőrizve böngészőben, és néhány teszt (`game_test`, `limit_test`, `voice_check`) emiatt hibát jelez.
+* A `src/` mappa az újabb munkapéldány. Egy minőségellenőrző kör 31 megerősített javítása van benne részben, még nem ellenőrizve böngészőben, és néhány teszt (`game_test`, `limit_test`) emiatt hibát jelez.
+* A magyar hangok zárolva vannak (2026-10-25): az `assets/voice/` mappa pontosan a közzétett oldal 241 hangfájlját tartalmazza, ezt az `assets/voice/FROZEN.sha256` és a `tests/voice_check.py` ellenőrzi. Egy félbehagyott, 238 fájlos változat a `hu-voice-draft-2026-09-30` git-címkénél érhető el.
 * Nem ellenőrzött valódi videokártyán, telefonon, Firefoxban és Safariban. Az összes hangot csak mérésekkel néztük, meghallgatni senki nem tudta őket.
 
 ## Fejlesztés
@@ -44,7 +45,7 @@ node tests/keys_test.js            # billentyűk (kamu böngészővel, böngész
 python tests/voice_check.py        # hangfájlok
 ```
 
-A tervet és a szerződéseket a `SPEC.md` tartalmazza. A forrásfájlok számozottak (`src/NN_*.js`), a 60 alattiak böngésző nélkül, Node-ban is futnak. A magyar hangokat az `edge-tts` csomaggal generálja a `tools/gen_voice.py` (internet kell hozzá).
+A tervet és a szerződéseket a `SPEC.md` tartalmazza. A forrásfájlok számozottak (`src/NN_*.js`), a 60 alattiak böngésző nélkül, Node-ban is futnak. A magyar hangokat az `edge-tts` csomaggal generálta a `tools/gen_voice.py` (internet kell hozzá). A hangok zárolva vannak, ezért az eszköz csak a `--unfreeze-hungarian` kapcsolóval fut: csak akkor használd, ha tényleg új magyar hangokat akarsz.
 
 A böngészős tesztek (`tests/browser_helper.js`, Playwright) ezen a fejlesztői gépen ki vannak kapcsolva, mert a fejetlen Edge-indítások hibás Windows-bejelentkezéseket okoztak. Lásd a projekt jegyzeteit, mielőtt újra bekapcsolod őket.
 
@@ -64,4 +65,4 @@ A Hungarian-language, Pac-Man themed pinball game for small children, delivered 
 
 Controls: left/right arrow or left/right Ctrl = flippers, Space = launch, P/Esc = pause, M = mute, F = fullscreen. After ten minutes of active play Pacman announces the last ball and says goodbye (`?perc=N` in the URL changes the minutes, `?perc=0` turns it off).
 
-`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.
+`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. The Hungarian voice in `assets/voice/` is frozen to the published 241 clips (`assets/voice/FROZEN.sha256`, checked by `tests/voice_check.py`); `tools/gen_voice.py` only runs with `--unfreeze-hungarian`. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.

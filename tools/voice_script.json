@@ -20,32 +20,38 @@
   {
     "cat": "howto",
     "who": "noemi",
-    "text": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!",
-    "tts": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!"
+    "text": "A nyilakkal mozgasd az ütőket!",
+    "tts": "A nyilakkal mozgasd az ütőket!"
   },
   {
     "cat": "howto",
     "who": "noemi",
-    "text": "Indítsd el a labdát a hosszú gombbal! Az ütőket a nyilakkal mozgasd!",
-    "tts": "Indítsd el a labdát a hosszú gombbal! Az ütőket a nyilakkal mozgasd!"
+    "text": "A szóközzel indítsd el a labdát!",
+    "tts": "A szóközzel indítsd el a labdát!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!",
+    "tts": "A nyilakkal mozgasd az ütőket, a szóközzel indítsd el a labdát!"
   },
   {
     "cat": "hint_launch",
     "who": "noemi",
-    "text": "Nyomd meg a szóközt!",
-    "tts": "Nyomd meg a szóközt!"
+    "text": "Nyomd meg a szóközt, és indul a labda!",
+    "tts": "Nyomd meg a szóközt, és indul a labda!"
   },
   {
     "cat": "hint_launch",
     "who": "noemi",
-    "text": "Nyomd meg a hosszú gombot!",
-    "tts": "Nyomd meg a hosszú gombot!"
+    "text": "Indítsd el a labdát! Nyomd meg a szóközt!",
+    "tts": "Indítsd el a labdát! Nyomd meg a szóközt!"
   },
   {
     "cat": "hint_launch",
     "who": "noemi",
-    "text": "Indítsd el! Nyomd a szóközt!",
-    "tts": "Indítsd el! Nyomd a szóközt!"
+    "text": "Mehet a labda? Nyomd meg a szóközt!",
+    "tts": "Mehet a labda? Nyomd meg a szóközt!"
   },
   {
     "cat": "hint_flippers",
@@ -170,8 +176,8 @@
   {
     "cat": "last_ball",
     "who": "noemi",
-    "text": "Ez az utolsó labdád! Hajrá, ügyes vagy!",
-    "tts": "Ez az utolsó labdád! Hajrá, ügyes vagy!"
+    "text": "Ez az utolsó labdád! Ügyes leszel!",
+    "tts": "Ez az utolsó labdád! Ügyes leszel!"
   },
   {
     "cat": "last_ball",
@@ -536,38 +542,38 @@
   {
     "cat": "pellet",
     "who": "noemi",
-    "text": "Kék szellemek! Kapd el őket!",
-    "tts": "Kék szellemek! Kapd el őket!"
+    "text": "Kék lettek a szellemek! Kapd el őket!",
+    "tts": "Kék lettek a szellemek! Kapd el őket!"
   },
   {
     "cat": "pellet",
     "who": "noemi",
-    "text": "Szédülnek a szellemek!",
-    "tts": "Szédülnek a szellemek!"
+    "text": "Nézd, kék szellemek! Kapd el mindet!",
+    "tts": "Nézd, kék szellemek! Kapd el mindet!"
   },
   {
     "cat": "pellet",
     "who": "noemi",
-    "text": "Kapd el a kék szellemeket!",
-    "tts": "Kapd el a kék szellemeket!"
+    "text": "Szédülnek a szellemek! Kapd el őket!",
+    "tts": "Szédülnek a szellemek! Kapd el őket!"
   },
   {
     "cat": "pellet",
     "who": "noemi",
-    "text": "Nézd, kék szellemek!",
-    "tts": "Nézd, kék szellemek!"
+    "text": "Most kapd el a kék szellemeket!",
+    "tts": "Most kapd el a kék szellemeket!"
   },
   {
     "cat": "power_end",
     "who": "noemi",
-    "text": "A szellemek újra vidámak!",
-    "tts": "A szellemek újra vidámak!"
+    "text": "Vége, a szellemek újra vidámak.",
+    "tts": "Vége, a szellemek újra vidámak."
   },
   {
     "cat": "power_end",
     "who": "noemi",
-    "text": "Felébredtek!",
-    "tts": "Felébredtek!"
+    "text": "Felébredtek a szellemek!",
+    "tts": "Felébredtek a szellemek!"
   },
   {
     "cat": "power_end",
@@ -686,20 +692,20 @@
   {
     "cat": "level_clear",
     "who": "noemi",
-    "text": "Minden pötty elfogyott!",
-    "tts": "Minden pötty elfogyott!"
+    "text": "Minden pötty elfogyott! Ügyes vagy!",
+    "tts": "Minden pötty elfogyott! Ügyes vagy!"
   },
   {
     "cat": "level_clear",
     "who": "noemi",
-    "text": "Elfogyott, jön a gyümölcs!",
-    "tts": "Elfogyott, jön a gyümölcs!"
+    "text": "Elfogyott az összes pötty! Nézd, jön a gyümölcs!",
+    "tts": "Elfogyott az összes pötty! Nézd, jön a gyümölcs!"
   },
   {
     "cat": "level_clear",
     "who": "noemi",
-    "text": "Bravó, minden pöttyöt megetted!",
-    "tts": "Bravó, minden pöttyöt megetted!"
+    "text": "Bravó, minden pöttyöt megettél!",
+    "tts": "Bravó, minden pöttyöt megettél!"
   },
   {
     "cat": "spinner",
@@ -776,20 +782,20 @@
   {
     "cat": "lock_ball",
     "who": "noemi",
-    "text": "A labda vár, jön a másik!",
-    "tts": "A labda vár, jön a másik!"
+    "text": "A labda a házban vár! Mindjárt jön a másik.",
+    "tts": "A labda a házban vár! Mindjárt jön a másik."
   },
   {
     "cat": "lock_ball",
     "who": "noemi",
-    "text": "Bent maradt! Jön a következő!",
-    "tts": "Bent maradt! Jön a következő!"
+    "text": "Bent maradt a labda! Jön a következő!",
+    "tts": "Bent maradt a labda! Jön a következő!"
   },
   {
     "cat": "lock_ball",
     "who": "noemi",
-    "text": "A házban vár, jön a másik!",
-    "tts": "A házban vár, jön a másik!"
+    "text": "A szellemek vigyáznak a labdára.",
+    "tts": "A szellemek vigyáznak a labdára."
   },
   {
     "cat": "multiball",
@@ -934,6 +940,18 @@
     "who": "tamas",
     "text": "Hűha, meglepetés!",
     "tts": "Hűha, meglepetés!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Mi lesz ez? Meglepetés!",
+    "tts": "Mi lesz ez? Meglepetés!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Kérdőjel! Meglepetés jön!",
+    "tts": "Kérdőjel! Meglepetés jön!"
   },
   {
     "cat": "surprise_bigflip",
@@ -1130,20 +1148,20 @@
   {
     "cat": "ballsave",
     "who": "pekmen",
-    "text": "Semmi baj! Itt vagyok!",
-    "tts": "Semmi baj! Itt vagyok!"
+    "text": "Semmi baj! Megmentettelek!",
+    "tts": "Semmi baj! Megmentettelek!"
   },
   {
     "cat": "ballsave",
     "who": "pekmen",
-    "text": "Nyam! Elkaptalak!",
-    "tts": "Nyam! Elkaptalak!"
+    "text": "Nyam! Elkaptam a labdát!",
+    "tts": "Nyam! Elkaptam a labdát!"
   },
   {
     "cat": "ballsave",
     "who": "noemi",
-    "text": "Megmentett Pacman!",
-    "tts": "Megmentett Pekmen!"
+    "text": "Semmi baj! Pacman megmentette a labdát!",
+    "tts": "Semmi baj! Pekmen megmentette a labdát!"
   },
   {
     "cat": "ballsave",
@@ -1154,14 +1172,14 @@
   {
     "cat": "drain",
     "who": "noemi",
-    "text": "Elgurult! Semmi baj!",
-    "tts": "Elgurult! Semmi baj!"
+    "text": "Ó, elgurult! Semmi baj!",
+    "tts": "Ó, elgurult! Semmi baj!"
   },
   {
     "cat": "drain",
     "who": "noemi",
-    "text": "Jaj, semmi baj!",
-    "tts": "Jaj, semmi baj!"
+    "text": "Jaj, elgurult a labda! Semmi baj!",
+    "tts": "Jaj, elgurult a labda! Semmi baj!"
   },
   {
     "cat": "drain",
@@ -1172,14 +1190,14 @@
   {
     "cat": "drain",
     "who": "noemi",
-    "text": "Nem baj, ügyes voltál!",
-    "tts": "Nem baj, ügyes voltál!"
+    "text": "Elgurult! Nem baj, ügyes voltál!",
+    "tts": "Elgurult! Nem baj, ügyes voltál!"
   },
   {
     "cat": "drain",
     "who": "noemi",
-    "text": "Semmi baj, mehetünk tovább!",
-    "tts": "Semmi baj, mehetünk tovább!"
+    "text": "Semmi baj, majd legközelebb!",
+    "tts": "Semmi baj, majd legközelebb!"
   },
   {
     "cat": "praise",
@@ -1274,14 +1292,14 @@
   {
     "cat": "over_stars_1",
     "who": "noemi",
-    "text": "Egy csillag a tiéd! Jól sikerült!",
-    "tts": "Egy csillag a tiéd! Jól sikerült!"
+    "text": "Egy csillag a tiéd! Ügyes voltál!",
+    "tts": "Egy csillag a tiéd! Ügyes voltál!"
   },
   {
     "cat": "over_stars_2",
     "who": "noemi",
-    "text": "Két csillagot kaptál! Szép játék!",
-    "tts": "Két csillagot kaptál! Szép játék!"
+    "text": "Két csillagot kaptál! Nagyon ügyes vagy!",
+    "tts": "Két csillagot kaptál! Nagyon ügyes vagy!"
   },
   {
     "cat": "over_stars_2",
@@ -1304,8 +1322,8 @@
   {
     "cat": "newrecord",
     "who": "noemi",
-    "text": "Új rekord! Nahát, ez nagyszerű!",
-    "tts": "Új rekord! Nahát, ez nagyszerű!"
+    "text": "Új rekord! Nahát, de ügyes vagy!",
+    "tts": "Új rekord! Nahát, de ügyes vagy!"
   },
   {
     "cat": "newrecord",
@@ -1378,7 +1396,6 @@
     "who": "pekmen",
     "text": "Sokat játszottunk! Ez az utolsó labda, aztán elköszönök, hogy ne ülj annyit a gép előtt.",
     "tts": "Sokat játszottunk! Ez az utolsó labda, aztán elköszönök, hogy ne ülj annyit a gép előtt.",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1386,7 +1403,6 @@
     "who": "pekmen",
     "text": "Nagyon ügyes vagy! Ez az utolsó labda, utána elköszönök, hogy egy kicsit pihenhess.",
     "tts": "Nagyon ügyes vagy! Ez az utolsó labda, utána elköszönök, hogy egy kicsit pihenhess.",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1394,7 +1410,6 @@
     "who": "pekmen",
     "text": "Hűha, de sokat játszottunk! Ez az utolsó labda, aztán elköszönök, és pihenünk.",
     "tts": "Hűha, de sokat játszottunk! Ez az utolsó labda, aztán elköszönök, és pihenünk.",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1402,7 +1417,6 @@
     "who": "pekmen",
     "text": "Jó volt veled játszani! Elköszönök. Később folytatjuk, addig segíts a szüleidnek! Szia!",
     "tts": "Jó volt veled játszani! Elköszönök. Később folytatjuk, addig segíts a szüleidnek! Szia!",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1410,7 +1424,6 @@
     "who": "pekmen",
     "text": "Szia! Nagyon jó volt! Később folytatjuk, addig menj, és segíts a szüleidnek!",
     "tts": "Szia! Nagyon jó volt! Később folytatjuk, addig menj, és segíts a szüleidnek!",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1418,7 +1431,6 @@
     "who": "pekmen",
     "text": "Most elköszönök. Köszönöm a játékot! Később folytatjuk, addig segíts a szüleidnek! Pá-pá!",
     "tts": "Most elköszönök. Köszönöm a játékot! Később folytatjuk, addig segíts a szüleidnek! Pá, pá!",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1426,7 +1438,6 @@
     "who": "pekmen",
     "text": "Most pihenünk. Később folytatjuk! Menj, segíts a szüleidnek!",
     "tts": "Most pihenünk. Később folytatjuk! Menj, segíts a szüleidnek!",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1434,7 +1445,6 @@
     "who": "pekmen",
     "text": "Szia, szia! Később folytatjuk. Addig segíts a szüleidnek!",
     "tts": "Szia, szia! Később folytatjuk. Addig segíts a szüleidnek!",
-    "rate": -10,
     "vol": 0.5
   },
   {
@@ -1442,7 +1452,6 @@
     "who": "pekmen",
     "text": "Most pihenünk egy kicsit. Menj, segíts a szüleidnek, később játszunk!",
     "tts": "Most pihenünk egy kicsit. Menj, segíts a szüleidnek, később játszunk!",
-    "rate": -10,
     "vol": 0.5
   }
 ]

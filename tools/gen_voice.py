@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """Generate the Hungarian voice clips and the manifest.
 
+FROZEN (SPEC 4.6): assets/voice/ holds the published Hungarian clips, checked by assets/voice/FROZEN.sha256. Re-recording
+cannot reproduce them (the online voices change), so this tool refuses to run unless it gets --unfreeze-hungarian, which is
+only for a change the owner explicitly asked for (FROZEN.sha256 then has to be rewritten too, or tests/voice_check.py fails).
+
 Usage:
+  python tools/gen_voice.py --unfreeze-hungarian ...   required before any of the lines below does anything
   python tools/gen_voice.py            synthesize what changed, post-process, delete orphans, write the manifest
   python tools/gen_voice.py --force    redo everything (synthesis and post-processing)
   python tools/gen_voice.py --post     redo only the post-processing (trim, loudness, encode) from the cached raw audio
@@ -353,7 +358,11 @@ def main():
     ap.add_argument('--force', action='store_true', help='redo synthesis and post-processing of every clip')
     ap.add_argument('--post', action='store_true', help='redo only the post-processing')
     ap.add_argument('--only', default='', help='comma separated category prefixes to restrict work to')
+    ap.add_argument('--unfreeze-hungarian', action='store_true', help='allow changing the frozen Hungarian voice (only with the owner\'s explicit OK)')
     args = ap.parse_args()
+    if not args.unfreeze_hungarian:
+        raise SystemExit('The Hungarian voice is frozen: assets/voice/ holds the published clips (assets/voice/FROZEN.sha256, SPEC 4.6).\n'
+                         'Nothing was changed. Use --unfreeze-hungarian only when the owner explicitly asked for new Hungarian clips.')
 
     os.makedirs(RAW_DIR, exist_ok=True)
     profiles = read_json(os.path.join(TOOLS, 'voice_profiles.json'))
