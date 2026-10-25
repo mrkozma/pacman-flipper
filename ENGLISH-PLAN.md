@@ -2,6 +2,8 @@
 
 Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6). It is not published yet (`docs/index.html` is unchanged) and
 `src/` is not ported yet. Phase 2 (the English voice) is next, phases 3 to 5 are open. The owner took decisions 1 to 4 (section 3).
+The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
+and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
 Branch `english-version`.
 
 ## 1. What the player gets
@@ -47,7 +49,7 @@ Branch `english-version`.
 
 **The two source trees (important for where we start):**
 
-- `docs/index.html` (published) = `verified-src/` JavaScript byte for byte (I rebuilt it in a scratch copy and compared: the script part is identical) **plus an older Hungarian voice set** (241 clips). The `assets/voice/` in the repo is the newer 238-clip set from the unfinished `src/` round. With it, `voice_check.py` currently fails (4 clips "silence not trimmed").
+- `docs/index.html` (published) = `verified-src/` JavaScript byte for byte (I rebuilt it in a scratch copy and compared: the script part is identical) **plus an older Hungarian voice set** (241 clips). The `assets/voice/` in the repo is the newer 238-clip set from the unfinished `src/` round. With it, `voice_check.py` currently fails (4 clips "silence not trimmed"). **Resolved 2026-10-25 (PR #2):** `assets/voice/` is again the published 241-clip set (3.6 MB), locked by `assets/voice/FROZEN.sha256`, `voice_check.py` and a guard in `gen_voice.py`; the draft is kept at the git tag `hu-voice-draft-2026-09-30`.
 - `tools/build.py` only built from `src/`: to rebuild the published page you had to copy `verified-src/` over `src/` by hand. Phase 1
   added `--src`, so `python3 tools/build.py --src verified-src` builds the published tree.
 - `src/` is the newer working copy with unfinished fixes and some failing tests (README, "Állapot").
@@ -108,7 +110,7 @@ assets/voice/                    Hungarian clips + manifest.json (unchanged)
 assets/voice_en/                 English clips + manifest.json (+ .raw/, .cache.json, ignored like the Hungarian ones)
 ```
 
-- **`gen_voice.py --lang en`**: one flag that switches the script folder (`tools/en/`), the profile file, `VOICE_DIR`, `RAW_DIR`, `CACHE_PATH` and `MANIFEST_PATH`. Without the flag it behaves exactly as now. The script glob stays per folder, so the two languages never mix and the orphan sweep only touches its own folder.
+- **`gen_voice.py --lang en`**: one flag that switches the script folder (`tools/en/`), the profile file, `VOICE_DIR`, `RAW_DIR`, `CACHE_PATH` and `MANIFEST_PATH`. Without the flag it stays the frozen Hungarian path, which refuses to run without `--unfreeze-hungarian` (SPEC 4.6); `--lang en` must never read or write `assets/voice/` or `FROZEN.sha256`. The script glob stays per folder, so the two languages never mix and the orphan sweep only touches its own folder.
 - **Speaker ids stay as role names** (`noemi` = narrator, `tamas` = announcer, `piri` `rozi` `kiki` `nori` = ghosts, `pekmen` = Pacman). The English profile file maps them to English voices. The manifest format, the `who` field and `voice_check.py`'s speaker list stay valid. Suggested mapping in Appendix B. Tune pitch and rate by ear.
 - **English lines**: about 200 to 240 lines over the same 70 categories (2 to 5 variants each, the one-off categories may have one). They follow the Hungarian intent of each category (SPEC 4.5 table), not a word-for-word translation. `tts` = `text` almost everywhere ("Pacman" is pronounced right by English voices). Tone and examples in Appendix B.
 - `.gitignore`: add `assets/voice_en/.raw/`.
@@ -144,7 +146,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
   - No em or en dashes in English.
   - The default is still Hungarian with no parameter.
 - **`tests/load.js`**: already supports `opts.sandbox`, so the DOM-free tests can be rerun with English loaded (`game_test`, `limit_test` and `keys_test` once more after `PM.setLanguage('en')`).
-- **`tests/voice_check.py --lang en`**: checks `assets/voice_en/manifest.json` against the same required categories. It uses an English syllable estimate (vowel groups `aeiouy`, minus a silent final `e`) instead of the Hungarian vowels, and checks the per-language budget from decision 2.
+- **`tests/voice_check.py --lang en`**: checks `assets/voice_en/manifest.json` against the same required categories. It uses an English syllable estimate (vowel groups `aeiouy`, minus a silent final `e`) instead of the Hungarian vowels, and checks the per-language budget from decision 2. The `FROZEN.sha256` check stays Hungarian only; without `--lang` the script checks the frozen Hungarian folder exactly as now.
 - **Screenshots**: `?language=en&screen=title|play|paused|over|notice|last|goodbye` at the SPEC 7 sizes (1280x720, 1920x1080, 800x1000, phone portrait). Look for clipped or overlapping text, especially on the goodbye screen and the notice speech bubble. The browser tests were turned off because headless Edge caused bad Windows logins. On this Mac that reason may not apply, but read the project notes first, as the README asks.
 - **Listen**: unlike the Hungarian clips (README: "nobody could listen to them"), the English ones can be checked by ear. Plan one listening pass over all clips before publishing.
 
@@ -172,7 +174,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 
 Phase 1 is small (about a day of careful work, most of it the strings). Phase 2 is most of the effort: writing and tuning about 240 English lines and listening to them. Generating them needs internet (edge-tts) and the Python packages that `gen_voice.py` imports (`edge-tts`, `av`, `numpy`, `mutagen`).
 
-Still open (decisions 1 to 4 do not cover it): if the published page is rebuilt from `verified-src/` with today's `assets/voice/`, the Hungarian voices change from the published 241-clip set to the newer 238-clip set (which `voice_check` currently fails on 4 clips). To keep the published Hungarian voices exactly, extract the old clips from `docs/index.html` (they are in it as base64) into the voice folder before rebuilding.
+Resolved (PR #2, merged 2026-10-25): the owner decided that the published Hungarian voice must not change. `assets/voice/` now holds the 241 published clips byte for byte (unpacked from `docs/index.html`), so a rebuild from `verified-src/` embeds the same Hungarian voice as the live page. Phase 4 checks that again before publishing.
 
 ## 6. Phase 1 result (2026-10-25)
 
@@ -207,7 +209,7 @@ PM_SRC=verified-src node tests/game_test.js                                     
 
 Open `dist/_en_preview.html?language=en` (no query = Hungarian; `?language=en&perc=15` also works).
 
-Results on 2026-10-25: `lang_test`, `game_test`, `limit_test` and `keys_test` print ALL PASS; `sim.js` has only the known failure "hole: the pop goes down and to one side" (also on the baseline, not about language). The default build from `src/` still builds and gets `PM_VOICE` through the alias. A scratch screenshot script in headless Edge on this Mac (not in `tests/`) shot the seven `?screen=` scenes at the four SPEC 7 sizes, two 33 s English autoplay runs and the Hungarian and `?language=xx` controls, and probed the voice (English: nothing decoded; Hungarian: 70 categories, 238 clips). Zero console errors on 35 pages, the English text fits, scores read `18,458`, the Hungarian pages look as before. This is a pre-check: phase 3 repeats it with the English voice in place.
+Results on 2026-10-25: `lang_test`, `game_test`, `limit_test` and `keys_test` print ALL PASS; `sim.js` has only the known failure "hole: the pop goes down and to one side" (also on the baseline, not about language). The default build from `src/` still builds and gets `PM_VOICE` through the alias. A scratch screenshot script in headless Edge on this Mac (not in `tests/`) shot the seven `?screen=` scenes at the four SPEC 7 sizes, two 33 s English autoplay runs and the Hungarian and `?language=xx` controls, and probed the voice (English: nothing decoded; Hungarian: 70 categories, 238 clips, the pre-PR #2 folder; since PR #2 it is the published 241). Zero console errors on 35 pages, the English text fits, scores read `18,458`, the Hungarian pages look as before. This is a pre-check: phase 3 repeats it with the English voice in place.
 
 **Known gaps and notes:**
 
@@ -220,7 +222,7 @@ Results on 2026-10-25: `lang_test`, `game_test`, `limit_test` and `keys_test` pr
 
 - Phase 2: `tools/en/voice_script.json` and `tools/en/voice_profiles.json`, `gen_voice.py --lang en`, `assets/voice_en/`, `voice_check.py --lang en` (English syllable estimate, 6 MB per language), `.gitignore` for `assets/voice_en/.raw/`. No page code changes: once `assets/voice_en/manifest.json` exists, the default build embeds it and `?language=en` speaks English.
 - Phase 3: screenshots with the English voice, the listening pass, `game_test`, `limit_test` and `keys_test` once more with English loaded, `lang_test.js` in `run_all.js`.
-- Phase 4: settle the 241 or 238 Hungarian clip question (section 5), rebuild `docs/index.html` with `--src verified-src`, README (`?language=en`), commit, push.
+- Phase 4: rebuild `docs/index.html` with `--src verified-src`; before committing, check that its Hungarian pack (`PM_VOICES.hu`) is identical to the voice of the live page and that `voice_check.py` passes (the frozen voice, SPEC 4.6); README (`?language=en`), commit, push.
 - Phase 5: port to `src/`: copy `07` and `08`, the three keys in `05` (keep the published `Pacman flipper játék` and change the capital F in the `src/` template; `lang_test` (d) checks that the two match), the diffs of `70`, `80`, `90` and the template, then run `node tests/lang_test.js` without `PM_SRC`.
 
 ## Appendix A: draft English on-screen strings
