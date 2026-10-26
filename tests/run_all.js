@@ -6,7 +6,8 @@
 //   node tests/run_all.js --only wiring,sim      run only the named steps (names are in the table)
 //   node tests/run_all.js --no-build             reuse the existing dist/pacman-flipper.html
 //
-// Order: build and static checks; then the tests that need no timing (sim, game rules, ten minute goodbye, audio, voice in both languages, wiring) in parallel;
+// Order: build and static checks; then the tests that need no timing (sim, game rules, ten minute goodbye, audio, voice in both languages, wiring,
+// the language switch, and the game, goodbye and key tests once more in English) in parallel;
 // then the browser tests one after the other (they measure frame times, so nothing else may compete for the CPU).
 // Every step writes its full output to tests/out/run_all/<name>.txt. The exit code is 1 when any step fails.
 // The dev builds that some tests make (dist/_dev_*.html) are deleted at the end, only dist/pacman-flipper.html stays.
@@ -17,6 +18,8 @@ const { spawn } = require('child_process');
 const ROOT = path.join(__dirname, '..');
 const OUTDIR = path.join(__dirname, 'out', 'run_all');
 const DIST = path.join(ROOT, 'dist', 'pacman-flipper.html');
+// The language tests need 07_strings_en.js and 08_lang.js. Until ENGLISH-PLAN.md phase 5 ports them to src/, they run on verified-src/.
+const LANG_SRC = fs.existsSync(path.join(ROOT, 'src', '08_lang.js')) ? 'src' : 'verified-src';
 const argv = process.argv.slice(2);
 const QUICK = argv.includes('--quick');
 const NO_BUILD = argv.includes('--no-build');
@@ -34,7 +37,7 @@ function run(name, cmd, args, opts) {
     const file = path.join(OUTDIR, name + '.txt');
     const out = fs.createWriteStream(file);
     let text = '';
-    const child = spawn(cmd, args, { cwd: ROOT, env: Object.assign({}, process.env, { PYTHONIOENCODING: 'utf-8', FORCE_COLOR: '0' }), windowsHide: true });
+    const child = spawn(cmd, args, { cwd: ROOT, env: Object.assign({}, process.env, { PYTHONIOENCODING: 'utf-8', FORCE_COLOR: '0' }, opts.env || {}), windowsHide: true });
     const timer = setTimeout(() => { text += '\nTIMEOUT after ' + (opts.timeout || 900) + ' s\n'; try { child.kill(); } catch (e) { /* gone */ } }, (opts.timeout || 900) * 1000);
     const take = (d) => { const s = d.toString('utf8'); text += s; out.write(s); };
     child.stdout.on('data', take);
@@ -144,6 +147,10 @@ function cleanDevBuilds() {
   if (wanted('game')) parallel.push(run('game', 'node', ['tests/game_test.js'], { timeout: 900 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   if (wanted('keys')) parallel.push(run('keys', 'node', ['tests/keys_test.js'], { timeout: 120 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   if (wanted('limit')) parallel.push(run('limit', 'node', ['tests/limit_test.js'], { timeout: 300 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
+  if (wanted('lang')) parallel.push(run('lang', 'node', ['tests/lang_test.js'], { timeout: 300, env: { PM_SRC: LANG_SRC } }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
+  for (const t of ['game', 'limit', 'keys']) {
+    if (wanted(t + '_en')) parallel.push(run(t + '_en', 'node', ['tests/' + t + '_test.js'], { timeout: t === 'game' ? 900 : 300, env: { PM_SRC: LANG_SRC, PM_LANG: 'en' } }).then((r) => fromRun(r, /ALL PASS|FAIL/, (x) => !/^\s*FAIL/m.test(x))));
+  }
   if (wanted('audio')) parallel.push(run('audio', 'node', ['tests/audio_analysis.js'].concat(QUICK ? ['--quick'] : []), { timeout: 1500 }).then((r) => fromRun(r, /all checks passed|FAIL/i, (t) => /all checks passed/i.test(t))));
   if (parallel.length) {
     console.log('  running ' + parallel.length + ' non-browser tests in parallel ...');
