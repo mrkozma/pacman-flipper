@@ -3,10 +3,10 @@
 Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6, PR #1, merged). Phase 2 (the English voice) done on 2026-10-25
 (section 7, PR #3, merged). Phase 3 (the checks) done on 2026-10-26 (section 8, PR #4, merged): the owner's listening pass passed with
 no changes. Phase 4 (publish) on 2026-10-26 (section 9, PR #5, merged): live since 2026-10-26, the owner played the English version.
-Phase 5 (port to `src/`) done on 2026-10-26 (section 10): every phase is done. The owner took decisions 1 to 4 (section 3).
+Phase 5 (port to `src/`) done on 2026-10-26 (section 10, PR #6, merged): every phase is done, final check in section 11. The owner took decisions 1 to 4 (section 3).
 The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
 and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
-Branches: `english-version`, `english-voice`, `english-check`, `english-publish` (phases 1 to 4, merged and deleted), `english-src` (phase 5).
+Branches: `english-version`, `english-voice`, `english-check`, `english-publish`, `english-src` (phases 1 to 5, all merged and deleted).
 
 ## 1. What the player gets
 
@@ -169,7 +169,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 |---|---|---|---|
 | 0 | Settle decisions 1 to 4 (done 2026-10-25) | (none) | |
 | 1 | Language switch + English text (done in `verified-src/`, 2026-10-25) | `90_main.js`, new `07_strings_en.js`, new `08_lang.js`, three keys in `05`/`06`, `fmtNum` in `70_render.js`, template, `80_audio.js` pack selection (§4.5), `build.py --src` and `--voice-langs`, `tests/lang_test.js` | Yes: English text with silent voice |
-| 2 | English voice (done 2026-10-25, not listened to yet) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
+| 2 | English voice (done 2026-10-25, listened to and passed 2026-10-26) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
 | 3 | Check (done 2026-10-26) | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
 | 4 | Publish (done 2026-10-26) | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
 | 5 | Port (done 2026-10-26) | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
@@ -364,6 +364,27 @@ console errors, with the template's Content-Security-Policy in force; each langu
 
 **What remains outside this plan:** the `src/` round itself (its failing `game_test` and `limit_test` lines, its browser check)
 before `src/` can be published. When it is, build it like the published tree and check again that `PM_VOICES.hu` is the frozen voice.
+
+## 11. Final check (2026-10-26, `main` after PR #6)
+
+- Live: https://mrkozma.github.io/pacman-flipper/ and `?language=en` serve `docs/index.html` of `main` byte for byte (sha256
+  `b94bc80f…`), and `python3 tools/build.py --src verified-src` on `main` rebuilds that file byte for byte. The 242 checksums of
+  `assets/voice/FROZEN.sha256` match.
+- `verified-src/` (the published tree): `lang_test` ALL PASS; `game_test`, `limit_test`, `keys_test` ALL PASS in Hungarian and in
+  English.
+- `src/` (`run_all.js`, every step that needs no browser helper): build, static, wiring, voice, voice_en, sim, keys, keys_en, lang
+  PASS; `game`, `game_en` (4) and `limit`, `limit_en` (3) fail with the lines of the unfinished `src/` round (section 8).
+  `audio_analysis.js` passes all its checks in headless Edge on this Mac when `tests/browser_helper.js` points at the Mac Edge (a
+  local, uncommitted change for one run).
+- Repository: only `main`, the tag `hu-voice-draft-2026-09-30`, no open pull request or issue.
+
+**Loose ends outside this plan** (none of them affects the published page):
+
+- The unfinished `src/` round: its failing `game_test` and `limit_test` lines and its browser check, before `src/` can be published.
+- `tests/browser_helper.js` hard-codes the Windows Edge path, so `audio_analysis.js` and the browser steps of `run_all.js` do not run
+  on a Mac as committed (`tests/shots_mac.js` reads `PM_EDGE` and has a Mac default).
+- `tests/run_all.js` and `tests/audio_analysis.js` call `python`; this Mac only has `python3` (a wrapper on `PATH` works).
+- `tests/sim.js` on `verified-src/` has the known "hole" failure; `src/` has the fix and passes.
 
 ## Appendix A: draft English on-screen strings
 
