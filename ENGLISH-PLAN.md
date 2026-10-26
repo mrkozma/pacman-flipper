@@ -1,10 +1,11 @@
 # Plan: English version with `?language=en`
 
-Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6). It is not published yet (`docs/index.html` is unchanged) and
-`src/` is not ported yet. Phase 2 (the English voice) is next, phases 3 to 5 are open. The owner took decisions 1 to 4 (section 3).
+Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6, PR #1, merged). Phase 2 (the English voice) done on 2026-10-25
+(section 7); nobody has listened to it yet, that is phase 3. Nothing is published yet (`docs/index.html` is unchanged) and `src/` is not
+ported yet. Phases 3 to 5 are open. The owner took decisions 1 to 4 (section 3).
 The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
 and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
-Branch `english-version`.
+Branches: `english-version` (phase 1, merged), `english-voice` (phase 2).
 
 ## 1. What the player gets
 
@@ -167,7 +168,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 |---|---|---|---|
 | 0 | Settle decisions 1 to 4 (done 2026-10-25) | (none) | |
 | 1 | Language switch + English text (done in `verified-src/`, 2026-10-25) | `90_main.js`, new `07_strings_en.js`, new `08_lang.js`, three keys in `05`/`06`, `fmtNum` in `70_render.js`, template, `80_audio.js` pack selection (§4.5), `build.py --src` and `--voice-langs`, `tests/lang_test.js` | Yes: English text with silent voice |
-| 2 | English voice | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
+| 2 | English voice (done 2026-10-25, not listened to yet) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
 | 3 | Check | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
 | 4 | Publish | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
 | 5 | Port | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
@@ -224,6 +225,58 @@ Results on 2026-10-25: `lang_test`, `game_test`, `limit_test` and `keys_test` pr
 - Phase 3: screenshots with the English voice, the listening pass, `game_test`, `limit_test` and `keys_test` once more with English loaded, `lang_test.js` in `run_all.js`.
 - Phase 4: rebuild `docs/index.html` with `--src verified-src`; before committing, check that its Hungarian pack (`PM_VOICES.hu`) is identical to the voice of the live page and that `voice_check.py` passes (the frozen voice, SPEC 4.6); README (`?language=en`), commit, push.
 - Phase 5: port to `src/`: copy `07` and `08`, the three keys in `05` (keep the published `Pacman flipper játék` and change the capital F in the `src/` template; `lang_test` (d) checks that the two match), the diffs of `70`, `80`, `90` and the template, then run `node tests/lang_test.js` without `PM_SRC`.
+
+## 7. Phase 2 result (2026-10-25)
+
+**Built** (the Hungarian voice is untouched: `assets/voice/` has no change in git, its 242 checksums match `FROZEN.sha256`):
+
+- `tools/en/voice_script.json` (new): 241 English lines, one for each Hungarian line, with the same category, speaker and `vol` in the
+  same order. So `welcome_2.mp3` is the same moment of the game in both packs, and both have 70 categories. The lines follow the intent of
+  their category (SPEC 4.5) and the rules of SPEC 6b. `tts` equals `text` except "Woo hoo", "Uh oh" and "Bye bye" (written with a
+  hyphen on the page, said without it).
+- `tools/en/voice_profiles.json` (new): the Hungarian categories, priorities, cooldowns and required list unchanged; the seven speaker
+  ids mapped to US voices (Appendix B has the starting values).
+- `tools/gen_voice.py --lang en`: reads `tools/en/`, writes only `assets/voice_en/` (`.raw/`, `.cache.json`, the mp3 files,
+  `manifest.json`). Without `--lang` it is the frozen Hungarian path as before (it still refuses to run without
+  `--unfreeze-hungarian`), and a guard stops any other language from writing into `assets/voice/`.
+- `assets/voice_en/` (new): 241 clips in 70 categories, 3.08 MB of mp3, 453 s of speech (Hungarian: 3.6 MB, 530 s), mean 1.88 s,
+  longest 6.46 s (`limit_goodbye_3`), played loudness -20.2 LUFS on average (sd 0.73), the same targets as the Hungarian clips.
+- `tests/voice_check.py --lang en`: checks `assets/voice_en/` with an English syllable estimate and fails on Hungarian letters; the
+  `FROZEN.sha256` check stays Hungarian only. Without `--lang` it checks the Hungarian folder exactly as before.
+- `tests/wiring_check.js`: the English pack has exactly the Hungarian categories, priorities and cooldowns, every listed mp3 exists,
+  and the goodbye lines pass the same timing checks (every `limit_notice` clip at most 8 s, so it ends before the 9 s notice).
+- `tests/run_all.js`: a `voice_en` step; the dash scan also reads `tools/en/` and the English manifest.
+- `tests/shots_mac.js` (the phase 1 scratch screenshot tool, now in the repo): the screenshots plus the language checks in headless Edge
+  on this Mac. For the voice it plays `over_stars_1`, `surprise_balloons` and `surprise_fruits` (every clip of these differs by more
+  than 0.8 s between the packs) and checks from the measured length that each language plays its own pack.
+- `tools/listen.py` (new): writes `dist/listen.html`, every clip of a category with the English and the Hungarian version side by side.
+- `.gitignore`: `assets/voice_en/.raw/` and `assets/voice_en/.cache.json`.
+
+No page code changed: `build.py` embeds every language whose `manifest.json` exists, so a default build now carries both packs and
+`?language=en` speaks English. The two-language page is 9.4 MB (the published page: 5.3 MB). A build from `src/` also carries both
+packs, but `src/80_audio.js` (not ported until phase 5) reads only the Hungarian `PM_VOICE` alias.
+
+**Build and test:**
+
+```
+~/.local/share/venvs/pacman-voice/bin/python tools/gen_voice.py --lang en     # only changed lines are synthesized again (needs internet)
+~/.local/share/venvs/pacman-voice/bin/python tests/voice_check.py --lang en
+python3 tools/listen.py && open dist/listen.html
+python3 tools/build.py --src verified-src --out dist/_en_preview.html && node tests/shots_mac.js
+```
+
+Results on 2026-10-25: `voice_check.py --lang en` OK (0 errors; 7 warnings: the three `limit_*` categories are not in the SPEC 4.5
+list, as in Hungarian, and four short exclamations with pauses count as "slow lines"); `voice_check.py` OK for the frozen Hungarian
+folder; `wiring_check.js` OK; `run_all.js --only build,static,wiring,voice,voice_en` all PASS; `lang_test`, `game_test`, `limit_test`
+and `keys_test` ALL PASS with `PM_SRC=verified-src`. In the two-language build `PM_VOICES.hu` is identical to the voice of the live
+page. `shots_mac.js`: 55 shots, all 21 checks PASS, no console errors; with `?language=en` the three probe clips lasted 2.01, 2.06 and
+2.58 s (the English files: 2.04, 2.11, 2.62 s), without it 3.11, 2.98 and 3.40 s (the Hungarian files: 3.14, 3.02, 3.43 s).
+
+**Left for phase 3:** nobody has listened to the English clips. The speaker settings are starting values, not tuned by ear. Listen
+with `dist/listen.html`, change `rate`/`pitch` in `tools/en/voice_profiles.json` (or `rate`/`pitch`/`vol` on one line of the script),
+run `gen_voice.py --lang en` again, then the screenshots with the voice, `game_test`, `limit_test` and `keys_test` with English loaded,
+and `lang_test.js` in `run_all.js`. The raw cache is only on this Mac: on another computer the first `--lang en` run synthesizes every
+clip again (the online voices change, so the clips can change a little).
 
 ## Appendix A: draft English on-screen strings
 
@@ -308,6 +361,10 @@ This is the draft; the shipped table is `verified-src/07_strings_en.js`, and whe
 | pekmen | Tamas low, slow | en-US-GuyNeural, lower, slower | hungry, cozy Pacman |
 
 UK alternative: en-GB-SoniaNeural (narrator), en-GB-RyanNeural (announcer), en-GB-MaisieNeural (child ghosts).
+
+Starting values in `tools/en/voice_profiles.json` (phase 2, before the listening pass; rate in %, pitch in Hz, gain in dB):
+`noemi` Jenny -6/0/0, `tamas` Guy -4/+4/0, `piri` Ana 0/0/+1, `rozi` Ana +10/+20/0, `kiki` Guy -4/+28/0, `nori` Jenny -18/-6/-2.5,
+`pekmen` Guy -10/-16/+0.5.
 
 **Tone examples** (one per category type; the full script is written in phase 2):
 

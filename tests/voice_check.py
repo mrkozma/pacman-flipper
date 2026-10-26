@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Verify assets/voice/manifest.json against SPEC 4.5 / 4.6.
+"""Verify a voice pack's manifest.json against SPEC 4.5 / 4.6: assets/voice/ (Hungarian) or assets/voice_en/ (--lang en).
 
-Usage: python tests/voice_check.py [--verbose]
+Usage: python tests/voice_check.py [--lang en] [--verbose]
 Exit code 1 when any check fails. Warnings never fail the run.
 All files are read as UTF-8; the report is printed with a safe fallback for consoles that cannot show Hungarian letters.
 The Hungarian voice is frozen (SPEC 4.6): the manifest and every mp3 must match assets/voice/FROZEN.sha256 (the published clips).
+The English pack is not frozen; its text must not contain Hungarian letters (SPEC 6b).
 """
 import argparse
 import hashlib
@@ -14,7 +15,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VOICE = os.path.join(ROOT, 'assets', 'voice')
+VOICE_DIRS = {'hu': os.path.join(ROOT, 'assets', 'voice'), 'en': os.path.join(ROOT, 'assets', 'voice_en')}
+HU_LETTERS = re.compile(r'[áéíóöőúüű]')
 
 # SPEC 4.5, frozen ids.
 REQUIRED = (
@@ -56,10 +58,25 @@ DASHES = ('—', '–', '‒', '―')
 SPEAKERS = {'noemi', 'tamas', 'piri', 'rozi', 'kiki', 'nori', 'pekmen'}
 
 
+def syllables(text, lang):
+    """Rough syllable count. Hungarian: one per vowel. English: one per vowel group of a word, minus a silent final e."""
+    if lang == 'hu':
+        return len(re.findall(r'[aáeéiíoóöőuúüű]', text.lower()))
+    n = 0
+    for w in re.findall(r"[a-z']+", text.lower()):
+        k = len(re.findall(r'[aeiouy]+', w))
+        if k > 1 and re.search(r'[^aeiouy]e$', w) and not w.endswith('le'):
+            k -= 1
+        n += max(1, k)
+    return n
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--verbose', action='store_true', help='print every clip')
+    ap.add_argument('--lang', choices=sorted(VOICE_DIRS), default='hu', help='which voice pack to check (default hu)')
     args = ap.parse_args()
+    VOICE = VOICE_DIRS[args.lang]
 
     try:
         sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -76,7 +93,7 @@ def main():
 
     mpath = os.path.join(VOICE, 'manifest.json')
     if not os.path.exists(mpath):
-        print('FAIL: %s does not exist (run python tools/gen_voice.py)' % mpath)
+        print('FAIL: %s does not exist (run python tools/gen_voice.py%s)' % (mpath, '' if args.lang == 'hu' else ' --lang ' + args.lang))
         return 1
     with open(mpath, 'r', encoding='utf-8') as f:
         manifest = json.load(f)
@@ -155,6 +172,8 @@ def main():
                 err('%s: doubled exclamation or question mark' % where)
             if re.search(r'\d', text):
                 warn('%s: digits in text' % where)
+            if args.lang != 'hu' and HU_LETTERS.search(text.lower()):
+                err('%s: Hungarian letters in %s text' % (where, args.lang))
             if not isinstance(dur, (int, float)):
                 err('%s: dur missing' % where)
                 continue
@@ -175,7 +194,7 @@ def main():
             durs.append(dur)
             cat_durs.append(dur)
             words = len(text.split())
-            syl = len(re.findall(r'[aáeéiíoóöőuúüű]', text.lower()))
+            syl = syllables(text, args.lang)
             limit = 0.8 + 0.45 * syl  # generous: about 2.2 syllables per second including pauses
             if dur > limit:
                 err('%s: %d words / %d syllables but %.2f s long, limit %.2f (silence not trimmed?)' % (where, words, syl, dur, limit))
@@ -218,7 +237,9 @@ def main():
 
     # The frozen Hungarian voice: the manifest and every mp3 byte for byte as listed in FROZEN.sha256 (shasum -a 256 format).
     frozen = os.path.join(VOICE, 'FROZEN.sha256')
-    if not os.path.exists(frozen):
+    if args.lang != 'hu':
+        pass  # only the Hungarian pack is frozen
+    elif not os.path.exists(frozen):
         err('assets/voice/FROZEN.sha256 is missing (the Hungarian voice is frozen)')
     else:
         want = {}

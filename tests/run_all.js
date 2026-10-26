@@ -6,7 +6,7 @@
 //   node tests/run_all.js --only wiring,sim      run only the named steps (names are in the table)
 //   node tests/run_all.js --no-build             reuse the existing dist/pacman-flipper.html
 //
-// Order: build and static checks; then the tests that need no timing (sim, game rules, ten minute goodbye, audio, voice, wiring) in parallel;
+// Order: build and static checks; then the tests that need no timing (sim, game rules, ten minute goodbye, audio, voice in both languages, wiring) in parallel;
 // then the browser tests one after the other (they measure frame times, so nothing else may compete for the CPU).
 // Every step writes its full output to tests/out/run_all/<name>.txt. The exit code is 1 when any step fails.
 // The dev builds that some tests make (dist/_dev_*.html) are deleted at the end, only dist/pacman-flipper.html stays.
@@ -75,7 +75,8 @@ function staticChecks() {
   const files = [];
   const walk = (dir, exts) => { for (const f of fs.readdirSync(path.join(ROOT, dir))) { const p = path.join(dir, f); if (fs.statSync(path.join(ROOT, p)).isFile() && exts.some((e) => f.endsWith(e))) files.push(p); } };
   walk('src', ['.js', '.css', '.html']); walk('tools', ['.py', '.json']); walk('tests', ['.js']);
-  files.push('assets/voice/manifest.json', 'SPEC.md');
+  if (fs.existsSync(path.join(ROOT, 'tools/en'))) walk('tools/en', ['.json']);
+  files.push('assets/voice/manifest.json', 'assets/voice_en/manifest.json', 'SPEC.md');
   for (const p of files) {
     if (!fs.existsSync(path.join(ROOT, p))) continue;
     fs.readFileSync(path.join(ROOT, p), 'utf8').split(/\r?\n/).forEach((l, i) => { if (dash.test(l)) problems.push('dash in ' + p + ':' + (i + 1)); });
@@ -138,6 +139,7 @@ function cleanDevBuilds() {
   const parallel = [];
   if (wanted('wiring')) parallel.push(run('wiring', 'node', ['tests/wiring_check.js'], { timeout: 120 }).then((r) => fromRun(r, /wiring OK|wiring problem/)));
   if (wanted('voice')) parallel.push(run('voice', 'python', ['tests/voice_check.py'], { timeout: 300 }).then((r) => fromRun(r, /RESULT/)));
+  if (wanted('voice_en') && fs.existsSync(path.join(ROOT, 'assets/voice_en/manifest.json'))) parallel.push(run('voice_en', 'python', ['tests/voice_check.py', '--lang', 'en'], { timeout: 300 }).then((r) => fromRun(r, /RESULT/)));
   if (wanted('sim')) parallel.push(run('sim', 'node', ['tests/sim.js'], { timeout: 600 }).then((r) => fromRun(r, /ALL CHECKS PASSED|FAIL/)));
   if (wanted('game')) parallel.push(run('game', 'node', ['tests/game_test.js'], { timeout: 900 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   if (wanted('keys')) parallel.push(run('keys', 'node', ['tests/keys_test.js'], { timeout: 120 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));

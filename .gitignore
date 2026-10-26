@@ -15,3 +15,5 @@ tests/BROWSER_TESTS_DISABLED.md
 _backup_*/
 .claude/
 assets/voice/.raw/
+assets/voice_en/.raw/
+assets/voice_en/.cache.json

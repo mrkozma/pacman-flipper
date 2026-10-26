@@ -298,7 +298,13 @@ and writes `assets/voice/manifest.json`:
 `{"cats": {"<cat>": {"priority":n, "cooldown":seconds, "clips":[{"f":"<file>.mp3","who":"noemi","text":"...","dur":1.8}]}}}`.
 Total embedded size target: at most 6 MB of mp3 per language. Clip length: ideally 0.4 to 3.5 s, never more than 8 s.
 One folder per language with the same layout and the same category ids: `assets/voice/` (Hungarian) and `assets/voice_en/` (English,
-phase 2 of `ENGLISH-PLAN.md`; the English scripts will live in `tools/en/`).
+phase 2 of `ENGLISH-PLAN.md`). `python tools/gen_voice.py --lang en` does for English what the default does for Hungarian: it reads
+`tools/en/voice_script*.json` and `tools/en/voice_profiles.json` and writes only `assets/voice_en/` (never `assets/voice/`). The English
+script has one line for every Hungarian line (same categories, variant count, speakers and `vol`, in the same order); the profile file keeps
+the Hungarian categories, priorities and cooldowns and maps the same speaker ids to US voices (`noemi` en-US-JennyNeural, `tamas`
+en-US-GuyNeural, `piri` and `rozi` en-US-AnaNeural, `kiki` Guy higher, `nori` Jenny slower and softer, `pekmen` Guy lower and slower).
+The English pack is not frozen. `tests/voice_check.py --lang en` checks it (English syllable estimate, no Hungarian letters), and
+`tests/wiring_check.js` checks that it has exactly the Hungarian pack's categories, priorities and cooldowns.
 `tools/build.py` embeds every language whose `manifest.json` exists (or the `--voice-langs` list) as
 `window.PM_VOICES = {"hu": {manifest, files:{"<file>.mp3":"<base64>"}}, "en": {...}}` plus the alias
 `window.PM_VOICE = window.PM_VOICES.hu || null` (the old single-pack name, read by `src/80_audio.js` and older tests);
@@ -401,6 +407,7 @@ missing in English shows the Hungarian text (`08_lang.js` merges the two tables)
 - 2026-10-25 lang: phase 1 of ENGLISH-PLAN.md, in verified-src/ (src/ follows later): `?language=en` gives English on-screen text, Hungarian stays the default. New 07_strings_en.js (PM.STRINGS_EN) and 08_lang.js (PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage); PM.T gets aria_label, fatal_missing and num_sep in every language; 90_main.js reads `language`, swaps PM.T in boot() before PM.Render.create(), sets `<html lang>` and the canvas aria-label, the missing module screen uses PM.T.fatal_missing; fmtNum in 70_render.js uses PM.T.num_sep; 80_audio.js loadVoices plays window.PM_VOICES[PM.LANG] (old builds: window.PM_VOICE) and stays silent without a pack for the language; build.py adds --src DIR and --voice-langs and writes window.PM_VOICES (plus the PM_VOICE alias); voice budget 6 MB of mp3 per language; the noscript text is bilingual; new tests/lang_test.js
 
 - 2026-10-25 voice: the Hungarian voice is frozen (4.6). assets/voice/ is again the published 241-clip set (the draft is at the git tag hu-voice-draft-2026-09-30), assets/voice/FROZEN.sha256 lists every file, tests/voice_check.py checks it, tools/gen_voice.py needs --unfreeze-hungarian, tools/voice_script.json describes the published clips, the stale hash cache assets/voice/.cache.json is gone
+- 2026-10-25 voice-en: phase 2 of ENGLISH-PLAN.md: the English voice. New tools/en/voice_script.json (241 lines, one per Hungarian line) and tools/en/voice_profiles.json (US voices, Hungarian categories/priorities/cooldowns), assets/voice_en/ (241 clips, 3.1 MB), gen_voice.py --lang, voice_check.py --lang, the English pack in wiring_check.js and run_all.js (step voice_en), tools/listen.py (a local listening page); no page code changed (build.py embeds every pack whose manifest exists)
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 

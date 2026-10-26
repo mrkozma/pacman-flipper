@@ -1,0 +1,1457 @@
+[
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Hi! Welcome to Pacman Flipper!",
+    "tts": "Hi! Welcome to Pacman Flipper!"
+  },
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Hi! Let's play together!",
+    "tts": "Hi! Let's play together!"
+  },
+  {
+    "cat": "welcome",
+    "who": "noemi",
+    "text": "Hello there! Today we play with Pacman!",
+    "tts": "Hello there! Today we play with Pacman!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "Use the arrows to move the flippers!",
+    "tts": "Use the arrows to move the flippers!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "Press the space bar to launch the ball!",
+    "tts": "Press the space bar to launch the ball!"
+  },
+  {
+    "cat": "howto",
+    "who": "noemi",
+    "text": "Use the arrows for the flippers, and the space bar to launch the ball!",
+    "tts": "Use the arrows for the flippers, and the space bar to launch the ball!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Press the space bar, and off goes the ball!",
+    "tts": "Press the space bar, and off goes the ball!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Launch the ball! Press the space bar!",
+    "tts": "Launch the ball! Press the space bar!"
+  },
+  {
+    "cat": "hint_launch",
+    "who": "noemi",
+    "text": "Ready for the ball? Press the space bar!",
+    "tts": "Ready for the ball? Press the space bar!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Press the arrows, and the flippers jump up!",
+    "tts": "Press the arrows, and the flippers jump up!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Try the left arrow and the right arrow!",
+    "tts": "Try the left arrow and the right arrow!"
+  },
+  {
+    "cat": "hint_flippers",
+    "who": "noemi",
+    "text": "Hit the ball back with the flippers!",
+    "tts": "Hit the ball back with the flippers!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Here comes the ball!",
+    "tts": "Here comes the ball!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Are you ready?",
+    "tts": "Are you ready?"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "Here is the next ball!",
+    "tts": "Here is the next ball!"
+  },
+  {
+    "cat": "ball_ready",
+    "who": "noemi",
+    "text": "A new ball is waiting for you!",
+    "tts": "A new ball is waiting for you!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Let's go!",
+    "tts": "Let's go!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Off it goes!",
+    "tts": "Off it goes!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "There it goes!",
+    "tts": "There it goes!"
+  },
+  {
+    "cat": "launch",
+    "who": "tamas",
+    "text": "Up and away!",
+    "tts": "Up and away!"
+  },
+  {
+    "cat": "ball_2",
+    "who": "noemi",
+    "text": "Second ball!",
+    "tts": "Second ball!"
+  },
+  {
+    "cat": "ball_2",
+    "who": "noemi",
+    "text": "Here comes the second ball!",
+    "tts": "Here comes the second ball!"
+  },
+  {
+    "cat": "ball_3",
+    "who": "noemi",
+    "text": "Third ball!",
+    "tts": "Third ball!"
+  },
+  {
+    "cat": "ball_3",
+    "who": "noemi",
+    "text": "Here comes the third ball!",
+    "tts": "Here comes the third ball!"
+  },
+  {
+    "cat": "ball_4",
+    "who": "noemi",
+    "text": "Fourth ball!",
+    "tts": "Fourth ball!"
+  },
+  {
+    "cat": "ball_4",
+    "who": "noemi",
+    "text": "Here comes the fourth ball!",
+    "tts": "Here comes the fourth ball!"
+  },
+  {
+    "cat": "ball_5",
+    "who": "noemi",
+    "text": "Fifth ball!",
+    "tts": "Fifth ball!"
+  },
+  {
+    "cat": "ball_5",
+    "who": "noemi",
+    "text": "Here comes the fifth ball!",
+    "tts": "Here comes the fifth ball!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "The last ball! You can do it!",
+    "tts": "The last ball! You can do it!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "This is your last ball! You'll do great!",
+    "tts": "This is your last ball! You'll do great!"
+  },
+  {
+    "cat": "last_ball",
+    "who": "noemi",
+    "text": "Last ball! Show me what you can do!",
+    "tts": "Last ball! Show me what you can do!"
+  },
+  {
+    "cat": "balls_left_1",
+    "who": "noemi",
+    "text": "You still have one ball.",
+    "tts": "You still have one ball."
+  },
+  {
+    "cat": "balls_left_1",
+    "who": "noemi",
+    "text": "You have one ball left.",
+    "tts": "You have one ball left."
+  },
+  {
+    "cat": "balls_left_2",
+    "who": "noemi",
+    "text": "You still have two balls.",
+    "tts": "You still have two balls."
+  },
+  {
+    "cat": "balls_left_2",
+    "who": "noemi",
+    "text": "You have two balls left.",
+    "tts": "You have two balls left."
+  },
+  {
+    "cat": "balls_left_3",
+    "who": "noemi",
+    "text": "You still have three balls.",
+    "tts": "You still have three balls."
+  },
+  {
+    "cat": "balls_left_3",
+    "who": "noemi",
+    "text": "You have three balls left.",
+    "tts": "You have three balls left."
+  },
+  {
+    "cat": "balls_left_4",
+    "who": "noemi",
+    "text": "You still have four balls.",
+    "tts": "You still have four balls."
+  },
+  {
+    "cat": "balls_left_4",
+    "who": "noemi",
+    "text": "You have four balls left.",
+    "tts": "You have four balls left."
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Ha ha ha!",
+    "tts": "Ha ha ha!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Oops!",
+    "tts": "Oops!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Here I am!",
+    "tts": "Here I am!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Hey, nice one!",
+    "tts": "Hey, nice one!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Woo-hoo!",
+    "tts": "Woo hoo!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "That was good!",
+    "tts": "That was good!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Boom!",
+    "tts": "Boom!"
+  },
+  {
+    "cat": "ghost_piri",
+    "who": "piri",
+    "text": "Do it again!",
+    "tts": "Do it again!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Hee hee!",
+    "tts": "Hee hee!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Hee hee hee!",
+    "tts": "Hee hee hee!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Oh, I'm ticklish!",
+    "tts": "Oh, I'm ticklish!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Oh, that tickles!",
+    "tts": "Oh, that tickles!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Tickle, tickle!",
+    "tts": "Tickle, tickle!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "I'm giggling!",
+    "tts": "I'm giggling!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "More, more!",
+    "tts": "More, more!"
+  },
+  {
+    "cat": "ghost_rozi",
+    "who": "rozi",
+    "text": "Oh, that's fun!",
+    "tts": "Oh, that's fun!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Whoa, I'm spinning!",
+    "tts": "Whoa, I'm spinning!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Uh-oh!",
+    "tts": "Uh oh!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Whoa!",
+    "tts": "Whoa!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "I'm dizzy!",
+    "tts": "I'm dizzy!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Wow, I spun around!",
+    "tts": "Wow, I spun around!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Oh, I'm wobbly!",
+    "tts": "Oh, I'm wobbly!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Whoopsie!",
+    "tts": "Whoopsie!"
+  },
+  {
+    "cat": "ghost_kiki",
+    "who": "kiki",
+    "text": "Sorry!",
+    "tts": "Sorry!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Peekaboo!",
+    "tts": "Peekaboo!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "I see you!",
+    "tts": "I see you!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Are we playing hide and seek?",
+    "tts": "Are we playing hide and seek?"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "Hi, I'm Nori!",
+    "tts": "Hi, I'm Nori!"
+  },
+  {
+    "cat": "ghost_nori",
+    "who": "nori",
+    "text": "I'm just peeking.",
+    "tts": "I'm just peeking."
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "piri",
+    "text": "Oh, you caught me!",
+    "tts": "Oh, you caught me!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "rozi",
+    "text": "Hee hee, got me!",
+    "tts": "Hee hee, got me!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "kiki",
+    "text": "Oh, I see stars!",
+    "tts": "Oh, I see stars!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "piri",
+    "text": "Wow, you're good!",
+    "tts": "Wow, you're good!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "rozi",
+    "text": "Oh, I'm so dizzy!",
+    "tts": "Oh, I'm so dizzy!"
+  },
+  {
+    "cat": "ghost_bonk",
+    "who": "kiki",
+    "text": "Whoa, everything's spinning!",
+    "tts": "Whoa, everything's spinning!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Three hits in a row!",
+    "tts": "Three hits in a row!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Three! Keep it up!",
+    "tts": "Three! Keep it up!"
+  },
+  {
+    "cat": "combo_3",
+    "who": "noemi",
+    "text": "Wow, three hits!",
+    "tts": "Wow, three hits!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Five hits! Super!",
+    "tts": "Five hits! Super!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Five in a row! Wow!",
+    "tts": "Five in a row! Wow!"
+  },
+  {
+    "cat": "combo_5",
+    "who": "noemi",
+    "text": "Five hits already! That's great!",
+    "tts": "Five hits already! That's great!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Ten hits! Fantastic!",
+    "tts": "Ten hits! Fantastic!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Ten in a row! Bravo!",
+    "tts": "Ten in a row! Bravo!"
+  },
+  {
+    "cat": "combo_10",
+    "who": "noemi",
+    "text": "Ten! You're the champion!",
+    "tts": "Ten! You're the champion!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Yum, yum!",
+    "tts": "Yum, yum!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Yum!",
+    "tts": "Yum!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Tasty!",
+    "tts": "Tasty!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Yummy!",
+    "tts": "Yummy!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Munch, munch, munch!",
+    "tts": "Munch, munch, munch!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "Oh, what a tasty dot!",
+    "tts": "Oh, what a tasty dot!"
+  },
+  {
+    "cat": "dots_nyam",
+    "who": "pekmen",
+    "text": "I'm still hungry!",
+    "tts": "I'm still hungry!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "The ghosts turned blue! Catch them!",
+    "tts": "The ghosts turned blue! Catch them!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Look, blue ghosts! Catch them all!",
+    "tts": "Look, blue ghosts! Catch them all!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "The ghosts are dizzy! Catch them!",
+    "tts": "The ghosts are dizzy! Catch them!"
+  },
+  {
+    "cat": "pellet",
+    "who": "noemi",
+    "text": "Now catch the blue ghosts!",
+    "tts": "Now catch the blue ghosts!"
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "All done, the ghosts are happy again.",
+    "tts": "All done, the ghosts are happy again."
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "The ghosts woke up!",
+    "tts": "The ghosts woke up!"
+  },
+  {
+    "cat": "power_end",
+    "who": "noemi",
+    "text": "The ghosts aren't dizzy anymore!",
+    "tts": "The ghosts aren't dizzy anymore!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "Cherry! Yum!",
+    "tts": "Cherry! Yum!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "Oh, a cherry! Tasty!",
+    "tts": "Oh, a cherry! Tasty!"
+  },
+  {
+    "cat": "fruit_cherry",
+    "who": "noemi",
+    "text": "A red cherry! Hooray!",
+    "tts": "A red cherry! Hooray!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "Strawberry! Yum!",
+    "tts": "Strawberry! Yum!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "A sweet strawberry! Tasty!",
+    "tts": "A sweet strawberry! Tasty!"
+  },
+  {
+    "cat": "fruit_strawberry",
+    "who": "noemi",
+    "text": "Oh, a strawberry! Hooray!",
+    "tts": "Oh, a strawberry! Hooray!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Orange! Yum!",
+    "tts": "Orange! Yum!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Look, an orange! Tasty!",
+    "tts": "Look, an orange! Tasty!"
+  },
+  {
+    "cat": "fruit_orange",
+    "who": "noemi",
+    "text": "Yay, an orange!",
+    "tts": "Yay, an orange!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "Apple! Yum!",
+    "tts": "Apple! Yum!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "A crunchy apple! Tasty!",
+    "tts": "A crunchy apple! Tasty!"
+  },
+  {
+    "cat": "fruit_apple",
+    "who": "noemi",
+    "text": "Oh, an apple! Hooray!",
+    "tts": "Oh, an apple! Hooray!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Pear! Yum!",
+    "tts": "Pear! Yum!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Oh, a sweet pear! Tasty!",
+    "tts": "Oh, a sweet pear! Tasty!"
+  },
+  {
+    "cat": "fruit_pear",
+    "who": "noemi",
+    "text": "Yay, a pear!",
+    "tts": "Yay, a pear!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Grapes! Yum!",
+    "tts": "Grapes! Yum!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Oh, grapes! Tasty!",
+    "tts": "Oh, grapes! Tasty!"
+  },
+  {
+    "cat": "fruit_grapes",
+    "who": "noemi",
+    "text": "Sweet grapes! Hooray!",
+    "tts": "Sweet grapes! Hooray!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "All the dots are gone! Well done!",
+    "tts": "All the dots are gone! Well done!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "You ate all the dots! Look, here comes a fruit!",
+    "tts": "You ate all the dots! Look, here comes a fruit!"
+  },
+  {
+    "cat": "level_clear",
+    "who": "noemi",
+    "text": "Bravo, you ate every dot!",
+    "tts": "Bravo, you ate every dot!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Round and round!",
+    "tts": "Round and round!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "It's spinning!",
+    "tts": "It's spinning!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "Whoa, it's spinning!",
+    "tts": "Whoa, it's spinning!"
+  },
+  {
+    "cat": "spinner",
+    "who": "tamas",
+    "text": "It spins like a top!",
+    "tts": "It spins like a top!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Tunnel!",
+    "tts": "Tunnel!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Whoosh, we zipped through!",
+    "tts": "Whoosh, we zipped through!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "We went through the tunnel!",
+    "tts": "We went through the tunnel!"
+  },
+  {
+    "cat": "tunnel",
+    "who": "tamas",
+    "text": "Where will we come out?",
+    "tts": "Where will we come out?"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Ghost house!",
+    "tts": "Ghost house!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "We're in the ghost house!",
+    "tts": "We're in the ghost house!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Knock, knock, ghost house!",
+    "tts": "Knock, knock, ghost house!"
+  },
+  {
+    "cat": "hole_enter",
+    "who": "tamas",
+    "text": "Oops, we fell into the house!",
+    "tts": "Oops, we fell into the house!"
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "The ball is waiting in the house! Another one is coming.",
+    "tts": "The ball is waiting in the house! Another one is coming."
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "The ball stayed inside! Here comes the next one!",
+    "tts": "The ball stayed inside! Here comes the next one!"
+  },
+  {
+    "cat": "lock_ball",
+    "who": "noemi",
+    "text": "The ghosts are keeping the ball safe.",
+    "tts": "The ghosts are keeping the ball safe."
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Two balls! Watch them both!",
+    "tts": "Two balls! Watch them both!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Wow, there are two balls!",
+    "tts": "Wow, there are two balls!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "Two balls! How fun!",
+    "tts": "Two balls! How fun!"
+  },
+  {
+    "cat": "multiball",
+    "who": "noemi",
+    "text": "One ball became two!",
+    "tts": "One ball became two!"
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "One ball left.",
+    "tts": "One ball left."
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "Only one ball is bouncing now.",
+    "tts": "Only one ball is bouncing now."
+  },
+  {
+    "cat": "multiball_end",
+    "who": "noemi",
+    "text": "The two-ball game is over.",
+    "tts": "The two-ball game is over."
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "All three are lit! Super!",
+    "tts": "All three are lit! Super!"
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "You got all three!",
+    "tts": "You got all three!"
+  },
+  {
+    "cat": "lane_done",
+    "who": "noemi",
+    "text": "More points for you! Well done!",
+    "tts": "More points for you! Well done!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Double up! Twice the points!",
+    "tts": "Double up! Twice the points!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Double points! Nice!",
+    "tts": "Double points! Nice!"
+  },
+  {
+    "cat": "mult_2",
+    "who": "noemi",
+    "text": "Every point is worth twice as much!",
+    "tts": "Every point is worth twice as much!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Triple points!",
+    "tts": "Triple points!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Three times the points! Great!",
+    "tts": "Three times the points! Great!"
+  },
+  {
+    "cat": "mult_3",
+    "who": "noemi",
+    "text": "Every point is worth three times as much!",
+    "tts": "Every point is worth three times as much!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Four times the points!",
+    "tts": "Four times the points!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Times four! Wow!",
+    "tts": "Times four! Wow!"
+  },
+  {
+    "cat": "mult_4",
+    "who": "noemi",
+    "text": "Every point is worth four times as much!",
+    "tts": "Every point is worth four times as much!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Five times the points!",
+    "tts": "Five times the points!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Times five! It can't go any higher!",
+    "tts": "Times five! It can't go any higher!"
+  },
+  {
+    "cat": "mult_5",
+    "who": "noemi",
+    "text": "Every point is worth five times as much!",
+    "tts": "Every point is worth five times as much!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Surprise!",
+    "tts": "Surprise!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "Whoa, a surprise!",
+    "tts": "Whoa, a surprise!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "What will it be? A surprise!",
+    "tts": "What will it be? A surprise!"
+  },
+  {
+    "cat": "mystery",
+    "who": "tamas",
+    "text": "A question mark! Here comes a surprise!",
+    "tts": "A question mark! Here comes a surprise!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "Big flippers! The flippers grew!",
+    "tts": "Big flippers! The flippers grew!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "Giant flippers! They got really big!",
+    "tts": "Giant flippers! They got really big!"
+  },
+  {
+    "cat": "surprise_bigflip",
+    "who": "noemi",
+    "text": "The flippers grew, so it's easier now!",
+    "tts": "The flippers grew, so it's easier now!"
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "Slow ball! It floats like a cloud.",
+    "tts": "Slow ball! It floats like a cloud."
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "Slow ball! Look how it floats!",
+    "tts": "Slow ball! Look how it floats!"
+  },
+  {
+    "cat": "surprise_slow",
+    "who": "noemi",
+    "text": "The ball floats softly, like a cloud.",
+    "tts": "The ball floats softly, like a cloud."
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Balloon rain! Pop the balloons!",
+    "tts": "Balloon rain! Pop the balloons!"
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Here come balloons! Touch them with the ball!",
+    "tts": "Here come balloons! Touch them with the ball!"
+  },
+  {
+    "cat": "surprise_balloons",
+    "who": "noemi",
+    "text": "Look at the balloons! Pop them!",
+    "tts": "Look at the balloons! Pop them!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Fruit party! Collect the fruits!",
+    "tts": "Fruit party! Collect the fruits!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Here come fruits! Collect them all!",
+    "tts": "Here come fruits! Collect them all!"
+  },
+  {
+    "cat": "surprise_fruits",
+    "who": "noemi",
+    "text": "Yummy fruits! Roll the ball over them!",
+    "tts": "Yummy fruits! Roll the ball over them!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "Ghost dance! Double points for the ghosts!",
+    "tts": "Ghost dance! Double points for the ghosts!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "The ghosts are dancing! They give double points!",
+    "tts": "The ghosts are dancing! They give double points!"
+  },
+  {
+    "cat": "surprise_dance",
+    "who": "noemi",
+    "text": "Dance time! Hit the ghosts for double points!",
+    "tts": "Dance time! Hit the ghosts for double points!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "Pacman keeps you safe! You can't lose the ball!",
+    "tts": "Pacman keeps you safe! You can't lose the ball!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "Shield! Pacman is guarding the ball!",
+    "tts": "Shield! Pacman is guarding the ball!"
+  },
+  {
+    "cat": "surprise_shield",
+    "who": "noemi",
+    "text": "You can't lose the ball now, Pacman is on guard!",
+    "tts": "You can't lose the ball now, Pacman is on guard!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "A bonus ball! You got one more ball!",
+    "tts": "A bonus ball! You got one more ball!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "One more ball, as a gift! Hooray!",
+    "tts": "One more ball, as a gift! Hooray!"
+  },
+  {
+    "cat": "surprise_extraball",
+    "who": "noemi",
+    "text": "Surprise, you got another ball!",
+    "tts": "Surprise, you got another ball!"
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "The surprise is over.",
+    "tts": "The surprise is over."
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "That was the surprise!",
+    "tts": "That was the surprise!"
+  },
+  {
+    "cat": "surprise_end",
+    "who": "noemi",
+    "text": "Surprise done, let's keep playing!",
+    "tts": "Surprise done, let's keep playing!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Pop!",
+    "tts": "Pop!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Pop, pop!",
+    "tts": "Pop, pop!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "Pop goes the balloon!",
+    "tts": "Pop goes the balloon!"
+  },
+  {
+    "cat": "balloon_pop",
+    "who": "tamas",
+    "text": "It popped!",
+    "tts": "It popped!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Star!",
+    "tts": "Star!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "A star!",
+    "tts": "A star!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Look, a star!",
+    "tts": "Look, a star!"
+  },
+  {
+    "cat": "star",
+    "who": "tamas",
+    "text": "Twinkle, twinkle!",
+    "tts": "Twinkle, twinkle!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "pekmen",
+    "text": "It's okay! I saved you!",
+    "tts": "It's okay! I saved you!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "pekmen",
+    "text": "Yum! I caught the ball!",
+    "tts": "Yum! I caught the ball!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "noemi",
+    "text": "It's okay! Pacman saved the ball!",
+    "tts": "It's okay! Pacman saved the ball!"
+  },
+  {
+    "cat": "ballsave",
+    "who": "noemi",
+    "text": "Pacman caught the ball!",
+    "tts": "Pacman caught the ball!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Oh, it rolled away! That's okay!",
+    "tts": "Oh, it rolled away! That's okay!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "Oh no, the ball rolled away! That's okay!",
+    "tts": "Oh no, the ball rolled away! That's okay!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "No problem, here comes the next one!",
+    "tts": "No problem, here comes the next one!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "It rolled away! That's okay, you did well!",
+    "tts": "It rolled away! That's okay, you did well!"
+  },
+  {
+    "cat": "drain",
+    "who": "noemi",
+    "text": "That's okay, maybe next time!",
+    "tts": "That's okay, maybe next time!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Good job!",
+    "tts": "Good job!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Super!",
+    "tts": "Super!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Great!",
+    "tts": "Great!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Bravo!",
+    "tts": "Bravo!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "That was awesome!",
+    "tts": "That was awesome!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Yes, that's it!",
+    "tts": "Yes, that's it!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Very good!",
+    "tts": "Very good!"
+  },
+  {
+    "cat": "praise",
+    "who": "noemi",
+    "text": "Wow, you're really good at this!",
+    "tts": "Wow, you're really good at this!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "Here's a little help!",
+    "tts": "Here's a little help!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "Here comes a little push!",
+    "tts": "Here comes a little push!"
+  },
+  {
+    "cat": "nudge",
+    "who": "noemi",
+    "text": "A little help, and off it goes!",
+    "tts": "A little help, and off it goes!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "Game over! You did really well!",
+    "tts": "Game over! You did really well!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "That was the last ball. You played great!",
+    "tts": "That was the last ball. You played great!"
+  },
+  {
+    "cat": "over",
+    "who": "noemi",
+    "text": "All done! That went really well!",
+    "tts": "All done! That went really well!"
+  },
+  {
+    "cat": "over_stars_1",
+    "who": "noemi",
+    "text": "You got one star! Nice!",
+    "tts": "You got one star! Nice!"
+  },
+  {
+    "cat": "over_stars_1",
+    "who": "noemi",
+    "text": "One star for you! Well done!",
+    "tts": "One star for you! Well done!"
+  },
+  {
+    "cat": "over_stars_2",
+    "who": "noemi",
+    "text": "You got two stars! You're really good!",
+    "tts": "You got two stars! You're really good!"
+  },
+  {
+    "cat": "over_stars_2",
+    "who": "noemi",
+    "text": "Two stars! Nice work!",
+    "tts": "Two stars! Nice work!"
+  },
+  {
+    "cat": "over_stars_3",
+    "who": "noemi",
+    "text": "Three stars! You're the champion!",
+    "tts": "Three stars! You're the champion!"
+  },
+  {
+    "cat": "over_stars_3",
+    "who": "noemi",
+    "text": "You got three stars! You're fantastic!",
+    "tts": "You got three stars! You're fantastic!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "A new record! Wow, you're so good!",
+    "tts": "A new record! Wow, you're so good!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "That's a new record! Bravo!",
+    "tts": "That's a new record! Bravo!"
+  },
+  {
+    "cat": "newrecord",
+    "who": "noemi",
+    "text": "You beat the record! Hooray!",
+    "tts": "You beat the record! Hooray!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "One more? Press the space bar!",
+    "tts": "One more? Press the space bar!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "Let's play again! Press the space bar!",
+    "tts": "Let's play again! Press the space bar!"
+  },
+  {
+    "cat": "play_again",
+    "who": "noemi",
+    "text": "Do you want to play more? Press the space bar!",
+    "tts": "Do you want to play more? Press the space bar!"
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "Break time!",
+    "tts": "Break time!"
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "A little rest! We'll keep going soon.",
+    "tts": "A little rest! We'll keep going soon."
+  },
+  {
+    "cat": "pause",
+    "who": "noemi",
+    "text": "The game is paused.",
+    "tts": "The game is paused."
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Let's keep going!",
+    "tts": "Let's keep going!"
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Back to the game!",
+    "tts": "Back to the game!"
+  },
+  {
+    "cat": "resume",
+    "who": "noemi",
+    "text": "Here we go again!",
+    "tts": "Here we go again!"
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "We played a lot! This is the last ball, then I'll say bye, so you don't sit too long.",
+    "tts": "We played a lot! This is the last ball, then I'll say bye, so you don't sit too long.",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "You're doing great! This is the last ball, then I'll say bye, so you can rest a bit.",
+    "tts": "You're doing great! This is the last ball, then I'll say bye, so you can rest a bit.",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_notice",
+    "who": "pekmen",
+    "text": "Wow, we played a lot! This is the last ball, then I'll say bye, and we'll rest.",
+    "tts": "Wow, we played a lot! This is the last ball, then I'll say bye, and we'll rest.",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "It was fun to play with you! Time to say bye. We'll play later. Go help your parents!",
+    "tts": "It was fun to play with you! Time to say bye. We'll play later. Go help your parents!",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "Bye! That was so much fun! We'll play again later. Now go help your parents!",
+    "tts": "Bye! That was so much fun! We'll play again later. Now go help your parents!",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_goodbye",
+    "who": "pekmen",
+    "text": "Time to say bye. Thanks for playing! We'll play later. Go help your parents! Bye-bye!",
+    "tts": "Time to say bye. Thanks for playing! We'll play later. Go help your parents! Bye bye!",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Now we rest. We'll play again later! Go help your parents!",
+    "tts": "Now we rest. We'll play again later! Go help your parents!",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Bye, bye! We'll play again later. Until then, help your parents!",
+    "tts": "Bye, bye! We'll play again later. Until then, help your parents!",
+    "vol": 0.5
+  },
+  {
+    "cat": "limit_rest",
+    "who": "pekmen",
+    "text": "Now let's rest a little. Go help your parents, and we'll play later!",
+    "tts": "Now let's rest a little. Go help your parents, and we'll play later!",
+    "vol": 0.5
+  }
+]
