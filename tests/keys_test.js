@@ -2,15 +2,22 @@
 // Keyboard test WITHOUT a browser. It loads the real game (src files below 60) and the real 90_main.js into a Node vm context
 // with a small fake window/document/canvas, then sends fake key events. Nothing is launched, no network, no credentials.
 //   node tests/keys_test.js
+//   PM_LANG=en node tests/keys_test.js      the same in English (the fake URL gets ?language=en, the real boot() picks it)
 const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
-const { listFiles, SRC } = require('./load');
+const { listFiles, SRC, LANG } = require('./load');
 
 let failures = 0;
 function check(name, ok, detail) {
   console.log((ok ? '  PASS ' : '  FAIL ') + name + (detail !== undefined ? '  (' + detail + ')' : ''));
   if (!ok) failures++;
+}
+
+function withLang(search) {
+  const q = new URLSearchParams(search || '');
+  if (!q.has('language')) q.set('language', LANG);
+  return q.toString();
 }
 
 async function makeEnv(search) {
@@ -30,7 +37,7 @@ async function makeEnv(search) {
   };
   const sandbox = {
     console, Math, JSON, Promise, Date, URLSearchParams, setTimeout, clearTimeout,
-    document: doc, location: { search: search || '' }, performance: { now: () => Date.now() },
+    document: doc, location: { search: LANG ? '?' + withLang(search) : search || '' }, performance: { now: () => Date.now() },
     localStorage: { getItem() { return null; }, setItem() {} },
     matchMedia() { return { matches: false }; },
     innerWidth: 1280, innerHeight: 720,
@@ -53,6 +60,7 @@ async function makeEnv(search) {
   vm.runInContext(fs.readFileSync(path.join(SRC, '90_main.js'), 'utf8'), ctx, { filename: '90_main.js' });
   await new Promise((r) => setTimeout(r, 30));          // fonts promise, then run()
   if (!ctx.PM_DEBUG) throw new Error('main did not boot (PM_DEBUG missing)');
+  if (LANG && PM.LANG !== LANG) throw new Error('PM_LANG=' + LANG + ' but the game booted in ' + PM.LANG);
   const game = ctx.PM_DEBUG.game;
   let ts = 1000;
   const env = {

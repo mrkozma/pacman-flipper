@@ -1,11 +1,12 @@
 # Plan: English version with `?language=en`
 
 Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6, PR #1, merged). Phase 2 (the English voice) done on 2026-10-25
-(section 7); nobody has listened to it yet, that is phase 3. Nothing is published yet (`docs/index.html` is unchanged) and `src/` is not
-ported yet. Phases 3 to 5 are open. The owner took decisions 1 to 4 (section 3).
+(section 7, PR #3, merged). Phase 3 (the checks) done on 2026-10-26 (section 8): the owner's listening pass passed with no changes.
+Nothing is published yet (`docs/index.html` is unchanged) and `src/` is not ported yet. Phases 4 and 5 are open. The owner took
+decisions 1 to 4 (section 3).
 The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
 and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
-Branches: `english-version` (phase 1, merged), `english-voice` (phase 2).
+Branches: `english-version` (phase 1, merged), `english-voice` (phase 2, merged), `english-check` (phase 3).
 
 ## 1. What the player gets
 
@@ -169,7 +170,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 | 0 | Settle decisions 1 to 4 (done 2026-10-25) | (none) | |
 | 1 | Language switch + English text (done in `verified-src/`, 2026-10-25) | `90_main.js`, new `07_strings_en.js`, new `08_lang.js`, three keys in `05`/`06`, `fmtNum` in `70_render.js`, template, `80_audio.js` pack selection (§4.5), `build.py --src` and `--voice-langs`, `tests/lang_test.js` | Yes: English text with silent voice |
 | 2 | English voice (done 2026-10-25, not listened to yet) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
-| 3 | Check | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
+| 3 | Check (done 2026-10-26) | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
 | 4 | Publish | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
 | 5 | Port | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
 
@@ -277,6 +278,39 @@ with `dist/listen.html`, change `rate`/`pitch` in `tools/en/voice_profiles.json`
 run `gen_voice.py --lang en` again, then the screenshots with the voice, `game_test`, `limit_test` and `keys_test` with English loaded,
 and `lang_test.js` in `run_all.js`. The raw cache is only on this Mac: on another computer the first `--lang en` run synthesizes every
 clip again (the online voices change, so the clips can change a little).
+
+## 8. Phase 3 result (2026-10-26)
+
+**Listening pass:** the owner listened to the English clips (`dist/listen.html`, written by `tools/listen.py`) and passed them with no
+changes. `tools/en/voice_profiles.json` and `tools/en/voice_script.json` stay as phase 2 made them, and `assets/voice_en/` is final.
+
+**Tests in English:**
+
+- `tests/load.js`: `PM_LANG=en` makes `loadPM()` switch `PM.T` to English after loading (`PM.setLanguage`). It stops with an error
+  when the tree has no `08_lang.js` or does not know the language, so a typo never runs the Hungarian test under an English name.
+- `tests/keys_test.js`: with `PM_LANG=en` the fake URL gets `?language=en`, so the real `boot()` picks English, and the test fails if
+  the game booted in another language.
+- `tests/run_all.js`: new steps `lang` (`tests/lang_test.js`) and `game_en`, `limit_en`, `keys_en` (the game, goodbye and key tests
+  with `PM_LANG=en`). They run on `src/` once it has `08_lang.js` (phase 5), on `verified-src/` until then (`LANG_SRC`).
+
+```
+PM_LANG=en PM_SRC=verified-src node tests/game_test.js      # and limit_test.js, keys_test.js
+node tests/run_all.js --only lang,game_en,limit_en,keys_en
+```
+
+**Results on 2026-10-26:** `game_test`, `limit_test` and `keys_test` ALL PASS with `PM_LANG=en PM_SRC=verified-src` (and, as before,
+in Hungarian). `run_all.js --only build,static,wiring,voice,voice_en,game,limit,keys,lang,game_en,limit_en,keys_en`: 10 of 12 PASS.
+The two failures, `game` (4) and `limit` (3), test `src/`, and an untouched `main` fails with exactly the same lines: they belong to the
+unfinished `src/` round (stars thresholds, chatter spacing, the goodbye timing), not to the English work. `shots_mac.js` on a fresh
+`--src verified-src` build with both packs: 55 shots (the seven `?screen=` scenes at the four SPEC 7 sizes, two English autoplay runs,
+the Hungarian and `?language=xx` controls), all 21 checks PASS, no console errors; the English text fits (goodbye screen on the phone,
+the notice bubble at 1280x720 looked at by eye); `?language=en` plays the English clips and the default the Hungarian ones (measured
+lengths 2.00, 2.06, 2.57 s against the English files and 3.11, 2.99, 3.29 s against the Hungarian files).
+
+**Phase 4 (publish) is next.** It changes the live page, so it waits for the owner's go-ahead: rebuild `docs/index.html` with
+`python3 tools/build.py --src verified-src --out docs/index.html`, check that its `PM_VOICES.hu` is identical to the voice of the live
+page and that `voice_check.py` passes, update the README (`?language=en`, the English summary), commit, push. The page grows from
+5.3 MB to 9.4 MB.
 
 ## Appendix A: draft English on-screen strings
 
