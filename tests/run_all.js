@@ -18,8 +18,6 @@ const { spawn } = require('child_process');
 const ROOT = path.join(__dirname, '..');
 const OUTDIR = path.join(__dirname, 'out', 'run_all');
 const DIST = path.join(ROOT, 'dist', 'pacman-flipper.html');
-// The language tests need 07_strings_en.js and 08_lang.js. Until ENGLISH-PLAN.md phase 5 ports them to src/, they run on verified-src/.
-const LANG_SRC = fs.existsSync(path.join(ROOT, 'src', '08_lang.js')) ? 'src' : 'verified-src';
 const argv = process.argv.slice(2);
 const QUICK = argv.includes('--quick');
 const NO_BUILD = argv.includes('--no-build');
@@ -147,9 +145,9 @@ function cleanDevBuilds() {
   if (wanted('game')) parallel.push(run('game', 'node', ['tests/game_test.js'], { timeout: 900 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   if (wanted('keys')) parallel.push(run('keys', 'node', ['tests/keys_test.js'], { timeout: 120 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   if (wanted('limit')) parallel.push(run('limit', 'node', ['tests/limit_test.js'], { timeout: 300 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
-  if (wanted('lang')) parallel.push(run('lang', 'node', ['tests/lang_test.js'], { timeout: 300, env: { PM_SRC: LANG_SRC } }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
+  if (wanted('lang')) parallel.push(run('lang', 'node', ['tests/lang_test.js'], { timeout: 300 }).then((r) => fromRun(r, /ALL PASS|FAIL/, (t) => !/^\s*FAIL/m.test(t))));
   for (const t of ['game', 'limit', 'keys']) {
-    if (wanted(t + '_en')) parallel.push(run(t + '_en', 'node', ['tests/' + t + '_test.js'], { timeout: t === 'game' ? 900 : 300, env: { PM_SRC: LANG_SRC, PM_LANG: 'en' } }).then((r) => fromRun(r, /ALL PASS|FAIL/, (x) => !/^\s*FAIL/m.test(x))));
+    if (wanted(t + '_en')) parallel.push(run(t + '_en', 'node', ['tests/' + t + '_test.js'], { timeout: t === 'game' ? 900 : 300, env: { PM_LANG: 'en' } }).then((r) => fromRun(r, /ALL PASS|FAIL/, (x) => !/^\s*FAIL/m.test(x))));
   }
   if (wanted('audio')) parallel.push(run('audio', 'node', ['tests/audio_analysis.js'].concat(QUICK ? ['--quick'] : []), { timeout: 1500 }).then((r) => fromRun(r, /all checks passed|FAIL/i, (t) => /all checks passed/i.test(t))));
   if (parallel.length) {

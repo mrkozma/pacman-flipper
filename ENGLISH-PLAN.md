@@ -2,11 +2,11 @@
 
 Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6, PR #1, merged). Phase 2 (the English voice) done on 2026-10-25
 (section 7, PR #3, merged). Phase 3 (the checks) done on 2026-10-26 (section 8, PR #4, merged): the owner's listening pass passed with
-no changes. Phase 4 (publish) on 2026-10-26 (section 9): `docs/index.html` rebuilt with both languages; it is live once its PR is merged.
-`src/` is not ported yet: phase 5 is open. The owner took decisions 1 to 4 (section 3).
+no changes. Phase 4 (publish) on 2026-10-26 (section 9, PR #5, merged): live since 2026-10-26, the owner played the English version.
+Phase 5 (port to `src/`) done on 2026-10-26 (section 10): every phase is done. The owner took decisions 1 to 4 (section 3).
 The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
 and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
-Branches: `english-version` (phase 1, merged), `english-voice` (phase 2, merged), `english-check` (phase 3, merged), `english-publish` (phase 4).
+Branches: `english-version`, `english-voice`, `english-check`, `english-publish` (phases 1 to 4, merged and deleted), `english-src` (phase 5).
 
 ## 1. What the player gets
 
@@ -172,7 +172,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 | 2 | English voice (done 2026-10-25, not listened to yet) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
 | 3 | Check (done 2026-10-26) | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
 | 4 | Publish (done 2026-10-26) | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
-| 5 | Port | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
+| 5 | Port (done 2026-10-26) | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
 
 Phase 1 is small (about a day of careful work, most of it the strings). Phase 2 is most of the effort: writing and tuning about 240 English lines and listening to them. Generating them needs internet (edge-tts) and the Python packages that `gen_voice.py` imports (`edge-tts`, `av`, `numpy`, `mutagen`).
 
@@ -338,6 +338,32 @@ Hungarian, bookmark the English address), the status and the English summary. SP
 
 **After the merge:** check that the live page has the new sha256 (GitHub Pages needs a minute or two), open
 `https://mrkozma.github.io/pacman-flipper/?language=en` and the plain address once in a real browser.
+
+## 10. Phase 5 result (2026-10-26)
+
+**Ported to `src/`** (the unfinished working copy; the published page and `verified-src/` are not touched):
+
+- `07_strings_en.js` and `08_lang.js` copied; `05_strings_hu.js` and `80_audio.js` got the phase 1 patch unchanged (they were
+  identical in both trees, and still are).
+- `70_render.js`: the `fmtNum` change (the file has CRLF line ends and keeps them).
+- `90_main.js`: the header lines, `language` in `readParams()`, `PM.setLanguage` with `<html lang>` and the canvas aria-label in
+  `boot()`, and `PM.T.fatal_missing` on the missing module screen. Ported by hand next to the `src/` round changes (the comma in
+  `perc`, the mute that is never saved, the swallowed Tab), which stay as they were.
+- `index.template.html`: the bilingual `<noscript>`, and the canvas label "Pacman flipper játék" (the published spelling, which
+  the Hungarian `aria_label` has, instead of the capital F). Its Content-Security-Policy stays.
+- Outside the language change the two trees differ exactly as before phase 1 (`90_main.js` by one line less: the missing
+  module line is now the same in both).
+- `tests/lang_test.js`: section (f) finds `fmtNum` with CRLF line ends too. `tests/run_all.js` runs the language steps on `src/`
+  (the tree choice of phase 3 is gone). SPEC §3 and §8, README and `verified-src/README.txt` no longer say that `src/` is Hungarian only.
+
+**Results on 2026-10-26:** `node tests/lang_test.js` (no `PM_SRC`, so `src/`) ALL PASS, and with `PM_SRC=verified-src` too.
+`keys_test` ALL PASS on `src/` in both languages. `game_test` (4) and `limit_test` (3) fail on `src/` in both languages with exactly
+the lines that an untouched `main` already had (the unfinished `src/` round, section 8), so the port adds no failure. `wiring_check`
+OK. A build from `src/` (`python3 tools/build.py`, 9.4 MB, both voice packs) passes `shots_mac.js`: 55 shots, all 21 checks, no
+console errors, with the template's Content-Security-Policy in force; each language plays its own voice.
+
+**What remains outside this plan:** the `src/` round itself (its failing `game_test` and `limit_test` lines, its browser check)
+before `src/` can be published. When it is, build it like the published tree and check again that `PM_VOICES.hu` is the frozen voice.
 
 ## Appendix A: draft English on-screen strings
 
