@@ -7,9 +7,10 @@ If you must change an interface, edit this file in the same change and add a lin
 
 A pinball game with a Pac-Man theme for Hungarian children (the target player is a 5-year-old).
 It is delivered as ONE self-contained HTML file: `dist/pacman-flipper.html` (double-click to play in Edge or Chrome,
-no install, no internet needed while playing). Hungarian is the default: all text and all speech are Hungarian.
-The same file also has English on-screen text with `?language=en` (US English, rules in 6b). The English voice pack comes in phase 2
-of `ENGLISH-PLAN.md`; until then English has no voice (music and SFX still play, Hungarian speech never plays under English text).
+no install, no internet needed while playing). Hungarian is the default: without `?language=en` all text and all speech are Hungarian.
+The same file also has English with `?language=en`: English on-screen text and an English voice (US English, rules in 6b; voice pack
+`assets/voice_en/`, 4.6). A build without the English pack (`--voice-langs hu`) has no English voice (music and SFX still play,
+Hungarian speech never plays under English text). The published page `docs/index.html` has both languages since 2026-10-26.
 
 User requirements (verbatim intent, do not drop any):
 - Right and left arrow keys control the right and left flippers. Space bar launches the ball.
@@ -408,6 +409,7 @@ missing in English shows the Hungarian text (`08_lang.js` merges the two tables)
 
 - 2026-10-25 voice: the Hungarian voice is frozen (4.6). assets/voice/ is again the published 241-clip set (the draft is at the git tag hu-voice-draft-2026-09-30), assets/voice/FROZEN.sha256 lists every file, tests/voice_check.py checks it, tools/gen_voice.py needs --unfreeze-hungarian, tools/voice_script.json describes the published clips, the stale hash cache assets/voice/.cache.json is gone
 - 2026-10-25 voice-en: phase 2 of ENGLISH-PLAN.md: the English voice. New tools/en/voice_script.json (241 lines, one per Hungarian line) and tools/en/voice_profiles.json (US voices, Hungarian categories/priorities/cooldowns), assets/voice_en/ (241 clips, 3.1 MB), gen_voice.py --lang, voice_check.py --lang, the English pack in wiring_check.js and run_all.js (step voice_en), tools/listen.py (a local listening page); no page code changed (build.py embeds every pack whose manifest exists)
+- 2026-10-26 publish: phase 4 of ENGLISH-PLAN.md: docs/index.html rebuilt from verified-src/ with both voice packs (`python3 tools/build.py --src verified-src --out docs/index.html`, 9.4 MB); its PM_VOICES.hu is the earlier published Hungarian voice byte for byte; tests/load.js PM_LANG and the run_all steps lang, game_en, limit_en, keys_en came with phase 3
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 

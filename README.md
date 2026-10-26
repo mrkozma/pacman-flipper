@@ -1,8 +1,10 @@
 # Pacman Flipper
 
-Magyar nyelvű, Pac-Man témájú flipperjáték kisgyerekeknek (a célközönség egy 5 éves). Egyetlen HTML fájl, a játékhoz nem kell internet, és mindent magyarul mond és ír ki.
+Magyar nyelvű, Pac-Man témájú flipperjáték kisgyerekeknek (a célközönség egy 5 éves). Egyetlen HTML fájl, a játékhoz nem kell internet, és mindent magyarul mond és ír ki. Angolul is játszható.
 
 **Játék:** https://mrkozma.github.io/pacman-flipper/
+
+**English:** https://mrkozma.github.io/pacman-flipper/?language=en
 
 ## Irányítás
 
@@ -27,12 +29,25 @@ Tíz perc aktív játék után Pac-Man előjön, elmondja, hogy ez lesz az utols
 
 Új játékot az oldal újratöltésével (F5) lehet indítani.
 
-## Állapot (2026-09-30)
+## Nyelv / Language
+
+Alapból magyar. A cím végére írt `?language=en` angol szöveget és angol (amerikai) hangot ad:
+
+* `?language=en` angolul
+* `?language=en&perc=15` angolul, 15 perces korláttal (a többi beállítással együtt is működik)
+* bármi más (`?language=hu`, `?language=xx`, üres) magyar marad
+
+Az oldal nem jegyzi meg a nyelvet, de az F5 megtartja a címet. Angolul játszó gyereknek a `?language=en` címet érdemes könyvjelzőbe tenni.
+
+Add `?language=en` to the address for English text and an English (US) voice: https://mrkozma.github.io/pacman-flipper/?language=en
+
+## Állapot (2026-10-26)
 
 * `docs/index.html` a közzétett, ellenőrzött változat. Ennek a JavaScript-forrása a `verified-src/` mappában van.
 * A `src/` mappa az újabb munkapéldány. Egy minőségellenőrző kör 31 megerősített javítása van benne részben, még nem ellenőrizve böngészőben, és néhány teszt (`game_test`, `limit_test`) emiatt hibát jelez.
 * A magyar hangok zárolva vannak (2026-10-25): az `assets/voice/` mappa pontosan a közzétett oldal 241 hangfájlját tartalmazza, ezt az `assets/voice/FROZEN.sha256` és a `tests/voice_check.py` ellenőrzi. Egy félbehagyott, 238 fájlos változat a `hu-voice-draft-2026-09-30` git-címkénél érhető el.
-* Nem ellenőrzött valódi videokártyán, telefonon, Firefoxban és Safariban. Az összes hangot csak mérésekkel néztük, meghallgatni senki nem tudta őket.
+* Angol változat (2026-10-26): `?language=en` angol szöveget és angol hangot ad. Az angol hangok (241 fájl, `assets/voice_en/`) meghallgatva, rendben vannak. A terv és az eredmények: `ENGLISH-PLAN.md`. A `src/` munkapéldányba még nincs átvezetve.
+* Nem ellenőrzött valódi videokártyán, telefonon, Firefoxban és Safariban. A magyar hangokat csak mérésekkel néztük, meghallgatni senki nem tudta őket.
 
 ## Fejlesztés
 
@@ -62,8 +77,8 @@ Licencet még nem adtam a kódhoz.
 
 ## English summary
 
-A Hungarian-language, Pac-Man themed pinball game for small children, delivered as one self-contained HTML file (no network needed, everything spoken and written in Hungarian). Play it at https://mrkozma.github.io/pacman-flipper/.
+A Pac-Man themed pinball game for small children, delivered as one self-contained HTML file (no network needed). It speaks and writes Hungarian by default; `?language=en` switches to English text and an English (US) voice. Play it at https://mrkozma.github.io/pacman-flipper/ (Hungarian) or https://mrkozma.github.io/pacman-flipper/?language=en (English).
 
 Controls: left/right arrow or left/right Ctrl = flippers, Space = launch, P/Esc = pause, M = mute, F = fullscreen. After ten minutes of active play Pacman announces the last ball and says goodbye (`?perc=N` in the URL changes the minutes, `?perc=0` turns it off).
 
-`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. The Hungarian voice in `assets/voice/` is frozen to the published 241 clips (`assets/voice/FROZEN.sha256`, checked by `tests/voice_check.py`); for Hungarian `tools/gen_voice.py` only runs with `--unfreeze-hungarian`. An English voice for `?language=en` is being prepared (`ENGLISH-PLAN.md`, not published yet): `tools/gen_voice.py --lang en` builds it from `tools/en/` into `assets/voice_en/`, and `tools/listen.py` writes a page to listen to both languages side by side. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.
+`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. The Hungarian voice in `assets/voice/` is frozen to the published 241 clips (`assets/voice/FROZEN.sha256`, checked by `tests/voice_check.py`); for Hungarian `tools/gen_voice.py` only runs with `--unfreeze-hungarian`. The English version (`ENGLISH-PLAN.md`, published 2026-10-26) has its strings in `verified-src/07_strings_en.js` and its voice in `assets/voice_en/` (241 clips, listened to and approved); `tools/gen_voice.py --lang en` builds the voice from `tools/en/`, and `tools/listen.py` writes a page to listen to both languages side by side. `src/` does not have English yet. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.

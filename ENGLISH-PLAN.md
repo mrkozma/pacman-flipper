@@ -1,12 +1,12 @@
 # Plan: English version with `?language=en`
 
 Status: phase 1 done in `verified-src/` on 2026-10-25 (section 6, PR #1, merged). Phase 2 (the English voice) done on 2026-10-25
-(section 7, PR #3, merged). Phase 3 (the checks) done on 2026-10-26 (section 8): the owner's listening pass passed with no changes.
-Nothing is published yet (`docs/index.html` is unchanged) and `src/` is not ported yet. Phases 4 and 5 are open. The owner took
-decisions 1 to 4 (section 3).
+(section 7, PR #3, merged). Phase 3 (the checks) done on 2026-10-26 (section 8, PR #4, merged): the owner's listening pass passed with
+no changes. Phase 4 (publish) on 2026-10-26 (section 9): `docs/index.html` rebuilt with both languages; it is live once its PR is merged.
+`src/` is not ported yet: phase 5 is open. The owner took decisions 1 to 4 (section 3).
 The Hungarian voice is frozen (the owner's decision, PR #2, merged 2026-10-25): `assets/voice/` holds the published 241 clips byte for byte
 and must not change (SPEC 4.6). Nothing in this plan records, replaces or regenerates a Hungarian clip.
-Branches: `english-version` (phase 1, merged), `english-voice` (phase 2, merged), `english-check` (phase 3).
+Branches: `english-version` (phase 1, merged), `english-voice` (phase 2, merged), `english-check` (phase 3, merged), `english-publish` (phase 4).
 
 ## 1. What the player gets
 
@@ -171,7 +171,7 @@ const data = all ? all[lang] : (lang === 'hu' ? g.PM_VOICE : null);   // an olde
 | 1 | Language switch + English text (done in `verified-src/`, 2026-10-25) | `90_main.js`, new `07_strings_en.js`, new `08_lang.js`, three keys in `05`/`06`, `fmtNum` in `70_render.js`, template, `80_audio.js` pack selection (§4.5), `build.py --src` and `--voice-langs`, `tests/lang_test.js` | Yes: English text with silent voice |
 | 2 | English voice (done 2026-10-25, not listened to yet) | `tools/en/*.json`, `gen_voice.py --lang`, `assets/voice_en/`, `voice_check.py --lang`, `.gitignore` | Yes |
 | 3 | Check (done 2026-10-26) | screenshots in English at four sizes, listening pass, all Node tests in both languages | |
-| 4 | Publish | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
+| 4 | Publish (done 2026-10-26) | rebuild `docs/index.html` (from the tree chosen in decision 1), README, SPEC, commit, push | |
 | 5 | Port | apply phases 1 and 2 to the other tree (`src/` if we started on `verified-src/`) | |
 
 Phase 1 is small (about a day of careful work, most of it the strings). Phase 2 is most of the effort: writing and tuning about 240 English lines and listening to them. Generating them needs internet (edge-tts) and the Python packages that `gen_voice.py` imports (`edge-tts`, `av`, `numpy`, `mutagen`).
@@ -311,6 +311,33 @@ lengths 2.00, 2.06, 2.57 s against the English files and 3.11, 2.99, 3.29 s agai
 `python3 tools/build.py --src verified-src --out docs/index.html`, check that its `PM_VOICES.hu` is identical to the voice of the live
 page and that `voice_check.py` passes, update the README (`?language=en`, the English summary), commit, push. The page grows from
 5.3 MB to 9.4 MB.
+
+## 9. Phase 4 result (2026-10-26)
+
+**Published file:** `docs/index.html`, rebuilt with `python3 tools/build.py --src verified-src --out docs/index.html` (9.4 MB, about
+6.6 MB gzipped; the page before: 5.3 MB, sha256 `2e8ecc3b…`, byte-identical to what https://mrkozma.github.io/pacman-flipper/ served).
+GitHub Pages serves `main` `/docs`, so the new page goes live when the publish PR is merged.
+
+**Compared with the page before:**
+
+- `PM_VOICES.hu` is the earlier published Hungarian voice byte for byte (manifest and all 241 mp3 files); `PM_VOICES.en` is
+  `assets/voice_en/` (241 clips).
+- Outside the voice data the only differences are the phase 1 changes (section 6): `07_strings_en.js` and `08_lang.js`, the three new
+  Hungarian keys, `fmtNum` with `PM.T.num_sep`, the pack choice in `80_audio.js`, `language` in `90_main.js`, the bilingual
+  `<noscript>`, the `PM_VOICE` alias line, and the known extra blank line in the CSS. The missing module screen in Hungarian now reads
+  "Pacman Flipper: hiányzó modul" (before: "... hiányzó modul / missing module").
+- Still one self-contained file: no external reference, no network request, no em or en dashes outside the voice data.
+
+**Checks on the new `docs/index.html`:** `voice_check.py` OK (the frozen Hungarian voice) and `--lang en` OK;
+`node tests/shots_mac.js --file docs/index.html`: 55 shots, all 21 checks PASS, no console errors; without a parameter the page is
+Hungarian (`<html lang="hu">`, the label "Pacman flipper játék", the Hungarian title screen looked at by eye) and plays the Hungarian
+clips; `?language=en` is English and plays the English clips; `?language=xx` is Hungarian.
+
+**Docs:** README: the English link, a "Nyelv / Language" section (`?language=en`, `?language=en&perc=15`, anything else is
+Hungarian, bookmark the English address), the status and the English summary. SPEC: §1 and the §8 line.
+
+**After the merge:** check that the live page has the new sha256 (GitHub Pages needs a minute or two), open
+`https://mrkozma.github.io/pacman-flipper/?language=en` and the plain address once in a real browser.
 
 ## Appendix A: draft English on-screen strings
 
