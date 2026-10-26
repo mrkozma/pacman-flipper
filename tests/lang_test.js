@@ -410,7 +410,7 @@ async function audioSection() {
 // ---------------------------------------------------------------------------------------------------------------
 function fmtSection() {
   section('(f) fmtNum of 70_render.js groups thousands with PM.T.num_sep (read at call time)');
-  const m = read('70_render.js').match(/\n {2}function fmtNum\(n\) \{[\s\S]*?\n {2}\}\n/);
+  const m = read('70_render.js').match(/\r?\n {2}function fmtNum\(n\) \{[\s\S]*?\r?\n {2}\}\r?\n/);   // src/70_render.js has CRLF line ends
   if (!check('fmtNum found in 70_render.js', !!m)) return;
   const ctx = vm.createContext({ PM: {} });
   const fmtNum = vm.runInContext('(function () {' + m[0] + 'return fmtNum; })()', ctx);

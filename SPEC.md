@@ -49,8 +49,8 @@ the global `PM` namespace. The build script concatenates files in filename order
 src/
   00_ns.js            PM namespace, PM.util (rng, clamp, lerp...), null PM.Audio   [frozen, DOM-free]
   05_strings_hu.js    PM.T Hungarian display strings                                [DOM-free]
-  07_strings_en.js    PM.STRINGS_EN English display strings (the keys of PM.T)      [DOM-free]  verified-src/ only until phase 5
-  08_lang.js          PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage     [DOM-free]  verified-src/ only until phase 5
+  07_strings_en.js    PM.STRINGS_EN English display strings (the keys of PM.T)      [DOM-free]
+  08_lang.js          PM.STRINGS {hu, en}, PM.LANG, PM.normLang, PM.setLanguage     [DOM-free]
   10_config.js        PM.CFG constants                                              [DOM-free]
   20_physics.js       PM.Physics.World                                              [DOM-free]  owner P
   30_table.js         PM.Table.build()                                              [DOM-free]  owner P
@@ -75,9 +75,9 @@ dist/                 build output. While developing, build to your own file: --
 ```
 
 `verified-src/` has the same layout: it is the published tree (the JavaScript of `docs/index.html`; build it with
-`--src verified-src`). Until phase 5 of `ENGLISH-PLAN.md` the language change (`07_strings_en.js`, `08_lang.js`, `?language=`,
-`PM_VOICES` in `80_audio.js`) exists only there and `src/` is still Hungarian only, so `tests/lang_test.js` runs with
-`PM_SRC=verified-src`.
+`--src verified-src`). Both trees have the language change (`07_strings_en.js`, `08_lang.js`, `?language=`, `PM_VOICES` in
+`80_audio.js`; `src/` got it in phase 5 of `ENGLISH-PLAN.md`), so `tests/lang_test.js` runs on either (`PM_SRC=verified-src` for
+the published tree) and `PM_LANG=en` runs `game_test.js`, `limit_test.js` and `keys_test.js` in English.
 
 Rules:
 - Files with numeric prefix < 60 must run in plain Node (no window, no document, no Audio). Test them with `tests/load.js`.
@@ -410,6 +410,7 @@ missing in English shows the Hungarian text (`08_lang.js` merges the two tables)
 - 2026-10-25 voice: the Hungarian voice is frozen (4.6). assets/voice/ is again the published 241-clip set (the draft is at the git tag hu-voice-draft-2026-09-30), assets/voice/FROZEN.sha256 lists every file, tests/voice_check.py checks it, tools/gen_voice.py needs --unfreeze-hungarian, tools/voice_script.json describes the published clips, the stale hash cache assets/voice/.cache.json is gone
 - 2026-10-25 voice-en: phase 2 of ENGLISH-PLAN.md: the English voice. New tools/en/voice_script.json (241 lines, one per Hungarian line) and tools/en/voice_profiles.json (US voices, Hungarian categories/priorities/cooldowns), assets/voice_en/ (241 clips, 3.1 MB), gen_voice.py --lang, voice_check.py --lang, the English pack in wiring_check.js and run_all.js (step voice_en), tools/listen.py (a local listening page); no page code changed (build.py embeds every pack whose manifest exists)
 - 2026-10-26 publish: phase 4 of ENGLISH-PLAN.md: docs/index.html rebuilt from verified-src/ with both voice packs (`python3 tools/build.py --src verified-src --out docs/index.html`, 9.4 MB); its PM_VOICES.hu is the earlier published Hungarian voice byte for byte; tests/load.js PM_LANG and the run_all steps lang, game_en, limit_en, keys_en came with phase 3
+- 2026-10-26 port: phase 5 of ENGLISH-PLAN.md: src/ has the language change too (07_strings_en.js and 08_lang.js copied, the phase 1 diffs of 05, 70, 80, 90 and the template ported; the src/ template now labels the canvas "Pacman flipper játék" like the published page and keeps its Content-Security-Policy); run_all.js runs the language steps on src/
 
 ## 9. Round 2 additions (2026-09-29, requested by the user after playing the first build)
 

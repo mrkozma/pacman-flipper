@@ -18,13 +18,15 @@
    URL parameters: autoplay=1 (a bot plays), skill=0..1 (bot skill), seed=N, debug=1 (small overlay), mute=1,
    screen=title|play|paused|over|notice|last|goodbye (jump straight to a screen, for screenshots),
    perc=N (minutes of play until Pacman says goodbye, decimals allowed with a dot or a comma, default 10, 0 = never, a negative or
-   unreadable value is ignored; perc=0.25 is 15 seconds for a test; with autoplay=1 the limit is off unless perc is given).
+   unreadable value is ignored; perc=0.25 is 15 seconds for a test; with autoplay=1 the limit is off unless perc is given),
+   language=en (English text; anything else or missing = Hungarian). boot() calls PM.setLanguage (08_lang.js) before anything reads
+   PM.T, then sets <html lang> and the canvas aria-label from it.
    The loop passes the real frame time (capped at 1 s) as the second argument of game.update, so a slow computer still gets the
    ten minutes of the clock on the wall, while the physics keep the clamped step.
    The goodbye screen (SPEC 9.2) is final: Space and taps only poke Pacman (game.launchDown does that, main never starts a game
    from it), the sound, music and pause buttons and the M, P and F keys keep working, the music is the lullaby ('gameover').
    A parent plays again by reloading the page (F5) or with ?perc=0.
-   window.PM_DEBUG = {PM, game, render, params}. */
+   window.PM_DEBUG = {PM, game, render, params, seed}. */
 (function (g) {
   'use strict';
   const PM = g.PM = g.PM || {};
@@ -45,7 +47,7 @@
   }
 
   function readParams() {
-    const p = { autoplay: false, skill: 0.8, seed: null, debug: false, mute: false, screen: '', perc: null };
+    const p = { autoplay: false, skill: 0.8, seed: null, debug: false, mute: false, screen: '', perc: null, language: 'hu' };
     try {
       const q = new URLSearchParams(g.location.search);
       const on = (k) => q.has(k) && q.get(k) !== '0' && q.get(k) !== 'false';
@@ -56,6 +58,7 @@
       if (sc === 'title' || sc === 'play' || sc === 'paused' || sc === 'over' || sc === 'notice' || sc === 'last' || sc === 'goodbye') p.screen = sc;
       const pc = (q.get('perc') || '').trim().replace(',', '.');                      // a Hungarian keyboard types 0,5
       if (pc !== '' && isFinite(+pc) && +pc >= 0) p.perc = +pc;                        // minutes; 0 = no limit; negative: keep the default
+      p.language = PM.normLang ? PM.normLang(q.get('language')) : 'hu';                    // unknown or missing: Hungarian
     } catch (err) { /* old browser: defaults */ }
     return p;
   }
@@ -96,10 +99,16 @@
   function boot() {
     const canvas = doc.getElementById('game');
     const params = readParams();
+    // The language first: the missing module screen below and PM.Render.create() in run() read PM.T.
+    if (PM.setLanguage) PM.setLanguage(params.language);
+    try {
+      doc.documentElement.lang = PM.LANG || 'hu';
+      if (canvas && PM.T && PM.T.aria_label) canvas.setAttribute('aria-label', PM.T.aria_label);
+    } catch (err) { /* only labels: the game does not need them */ }
     const missing = missingModules();
     if (!canvas || missing.length) {
       warn('cannot start, missing: ' + (canvas ? '' : 'canvas#game ') + missing.join(', ') + '. Rebuild with python tools/build.py (all src files).');
-      if (canvas) showFatal(canvas, ['Pacman Flipper: hiányzó modul', missing.join(', ')]);
+      if (canvas) showFatal(canvas, [(PM.T && PM.T.fatal_missing) || 'Pacman Flipper: missing module', missing.join(', ')]);
       return;
     }
     // PM.Audio may be the silent stand-in from 00_ns.js: that is fine, the game just stays quiet.

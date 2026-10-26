@@ -109,10 +109,12 @@
     rgbaCache.set(key, v);
     return v;
   }
+  // 12500 -> '12 500' (Hungarian, a no-break space) or '12,500' (English): the separator is PM.T.num_sep, read at call time
   function fmtNum(n) {
     n = Math.max(0, Math.round(+n || 0));
+    const sep = PM.T && typeof PM.T.num_sep === 'string' ? PM.T.num_sep : '\u00a0';
     let s = String(n), out = '';
-    while (s.length > 3) { out = ' ' + s.slice(-3) + out; s = s.slice(0, -3); }
+    while (s.length > 3) { out = sep + s.slice(-3) + out; s = s.slice(0, -3); }
     return s + out;
   }
   const isObj = (o) => o !== null && typeof o === 'object';
