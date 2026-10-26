@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Generate the Hungarian voice clips and the manifest.
+"""Generate the voice clips and the manifest of one language (Hungarian by default, English with --lang en).
 
 FROZEN (SPEC 4.6): assets/voice/ holds the published Hungarian clips, checked by assets/voice/FROZEN.sha256. Re-recording
-cannot reproduce them (the online voices change), so this tool refuses to run unless it gets --unfreeze-hungarian, which is
-only for a change the owner explicitly asked for (FROZEN.sha256 then has to be rewritten too, or tests/voice_check.py fails).
+cannot reproduce them (the online voices change), so for Hungarian this tool refuses to run unless it gets --unfreeze-hungarian,
+which is only for a change the owner explicitly asked for (FROZEN.sha256 then has to be rewritten too, or tests/voice_check.py fails).
+--lang en reads tools/en/ and writes only assets/voice_en/; it never reads or writes assets/voice/.
 
 Usage:
-  python tools/gen_voice.py --unfreeze-hungarian ...   required before any of the lines below does anything
+  python tools/gen_voice.py --lang en ...              English: any of the lines below, on assets/voice_en/
+  python tools/gen_voice.py --unfreeze-hungarian ...   Hungarian: required before any of the lines below does anything
   python tools/gen_voice.py            synthesize what changed, post-process, delete orphans, write the manifest
   python tools/gen_voice.py --force    redo everything (synthesis and post-processing)
   python tools/gen_voice.py --post     redo only the post-processing (trim, loudness, encode) from the cached raw audio
@@ -14,15 +16,17 @@ Usage:
                                                    (the manifest still lists every clip that exists)
 
 Pipeline per clip:
-  1. edge-tts renders the "tts" text with the speaker's neural voice, rate and pitch -> assets/voice/.raw/<file>
+  1. edge-tts renders the "tts" text with the speaker's neural voice, rate and pitch -> <voice folder>/.raw/<file>
      (the Azure voices add about 1.5 s of silence around every line, so the raw files are never shipped)
   2. post-processing (PyAV + numpy): trim the silence, short fades, soft-knee peak compression, encode mono mp3
-     (peak about -3 dBFS) -> assets/voice/<cat>_<n>.mp3, then measure the BS.1770 loudness of the encoded clip
+     (peak about -3 dBFS) -> <voice folder>/<cat>_<n>.mp3, then measure the BS.1770 loudness of the encoded clip
   3. manifest.json (SPEC 4.6) with durations measured by mutagen and, per clip, play_gain_db: the gain in dB that
      src/80_audio.js applies when it plays the clip, so every line reaches -20 LUFS plus its speaker offset
-     (speaker gain_db in tools/voice_profiles.json, entry "vol" in the script) with the played peak at most -4 dBFS.
+     (speaker gain_db in voice_profiles.json, entry "vol" in the script) with the played peak at most -4 dBFS.
 
-Reads every tools/voice_script*.json (voice_script.json first, then the others in name order) and tools/voice_profiles.json.
+Reads every voice_script*.json of the language's script folder (voice_script.json first, then the others in name order) and
+its voice_profiles.json: tools/ and assets/voice/ for Hungarian, tools/en/ and assets/voice_en/ for English. The script glob
+does not look into subfolders, so the two languages never mix and the orphan sweep only touches the language's own folder.
 All files are read and written as UTF-8. Hungarian text never goes through a command line.
 """
 import argparse
@@ -41,10 +45,13 @@ from mutagen.mp3 import MP3
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TOOLS = os.path.join(ROOT, 'tools')
-VOICE_DIR = os.path.join(ROOT, 'assets', 'voice')
-RAW_DIR = os.path.join(VOICE_DIR, '.raw')
-CACHE_PATH = os.path.join(VOICE_DIR, '.cache.json')
-MANIFEST_PATH = os.path.join(VOICE_DIR, 'manifest.json')
+# Per language: the folder with voice_script*.json and voice_profiles.json, and the output folder (SPEC 4.6).
+LANGS = {
+    'hu': {'scripts': TOOLS, 'voice': os.path.join(ROOT, 'assets', 'voice')},
+    'en': {'scripts': os.path.join(TOOLS, 'en'), 'voice': os.path.join(ROOT, 'assets', 'voice_en')},
+}
+# Set by use_lang(); every function below reads these.
+SCRIPT_DIR = VOICE_DIR = RAW_DIR = CACHE_PATH = MANIFEST_PATH = None
 
 CONCURRENCY = 3
 RETRIES = 5
@@ -82,9 +89,21 @@ def write_json(path, data):
         f.write('\n')
 
 
+def use_lang(lang):
+    """Point every path at one language's folders."""
+    global SCRIPT_DIR, VOICE_DIR, RAW_DIR, CACHE_PATH, MANIFEST_PATH
+    SCRIPT_DIR = LANGS[lang]['scripts']
+    VOICE_DIR = LANGS[lang]['voice']
+    if lang != 'hu' and os.path.realpath(VOICE_DIR) == os.path.realpath(LANGS['hu']['voice']):
+        raise SystemExit('refusing to write %s into the frozen Hungarian folder' % lang)
+    RAW_DIR = os.path.join(VOICE_DIR, '.raw')
+    CACHE_PATH = os.path.join(VOICE_DIR, '.cache.json')
+    MANIFEST_PATH = os.path.join(VOICE_DIR, 'manifest.json')
+
+
 def script_files():
-    files = sorted(glob.glob(os.path.join(TOOLS, 'voice_script*.json')))
-    main = os.path.join(TOOLS, 'voice_script.json')
+    files = sorted(glob.glob(os.path.join(SCRIPT_DIR, 'voice_script*.json')))
+    main = os.path.join(SCRIPT_DIR, 'voice_script.json')
     if main in files:
         files.remove(main)
         files.insert(0, main)
@@ -358,14 +377,18 @@ def main():
     ap.add_argument('--force', action='store_true', help='redo synthesis and post-processing of every clip')
     ap.add_argument('--post', action='store_true', help='redo only the post-processing')
     ap.add_argument('--only', default='', help='comma separated category prefixes to restrict work to')
+    ap.add_argument('--lang', choices=sorted(LANGS), default='hu', help='which language to generate (default hu, the frozen voice)')
     ap.add_argument('--unfreeze-hungarian', action='store_true', help='allow changing the frozen Hungarian voice (only with the owner\'s explicit OK)')
     args = ap.parse_args()
-    if not args.unfreeze_hungarian:
+    if args.lang == 'hu' and not args.unfreeze_hungarian:
         raise SystemExit('The Hungarian voice is frozen: assets/voice/ holds the published clips (assets/voice/FROZEN.sha256, SPEC 4.6).\n'
                          'Nothing was changed. Use --unfreeze-hungarian only when the owner explicitly asked for new Hungarian clips.')
 
+    use_lang(args.lang)
+    profiles = read_json(os.path.join(SCRIPT_DIR, 'voice_profiles.json'))
+    if not profiles or not script_files():
+        raise SystemExit('%s needs voice_profiles.json and voice_script.json' % os.path.relpath(SCRIPT_DIR, ROOT))
     os.makedirs(RAW_DIR, exist_ok=True)
-    profiles = read_json(os.path.join(TOOLS, 'voice_profiles.json'))
     clips = build_clips(profiles)
     cache = read_json(CACHE_PATH, {}) or {}
     prefixes = [p.strip() for p in args.only.split(',') if p.strip()]

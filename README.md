@@ -43,9 +43,10 @@ node tests/game_test.js            # játékszabályok
 node tests/limit_test.js           # az elköszönés
 node tests/keys_test.js            # billentyűk (kamu böngészővel, böngésző nélkül)
 python tests/voice_check.py        # hangfájlok
+python tests/voice_check.py --lang en   # angol hangfájlok
 ```
 
-A tervet és a szerződéseket a `SPEC.md` tartalmazza. A forrásfájlok számozottak (`src/NN_*.js`), a 60 alattiak böngésző nélkül, Node-ban is futnak. A magyar hangokat az `edge-tts` csomaggal generálta a `tools/gen_voice.py` (internet kell hozzá). A hangok zárolva vannak, ezért az eszköz csak a `--unfreeze-hungarian` kapcsolóval fut: csak akkor használd, ha tényleg új magyar hangokat akarsz.
+A tervet és a szerződéseket a `SPEC.md` tartalmazza. A forrásfájlok számozottak (`src/NN_*.js`), a 60 alattiak böngésző nélkül, Node-ban is futnak. A magyar hangokat az `edge-tts` csomaggal generálta a `tools/gen_voice.py` (internet kell hozzá). A magyar hangok zárolva vannak, ezért magyarul az eszköz csak a `--unfreeze-hungarian` kapcsolóval fut: csak akkor használd, ha tényleg új magyar hangokat akarsz. Az angol hangokat (az angol változat terve: `ENGLISH-PLAN.md`) a `python tools/gen_voice.py --lang en` készíti a `tools/en/` szövegeiből az `assets/voice_en/` mappába; ez a magyar hangokhoz nem nyúl. A `python3 tools/listen.py` egy hallgatóoldalt ír (`dist/listen.html`), ahol az angol és a magyar hangok egymás mellett meghallgathatók.
 
 A böngészős tesztek (`tests/browser_helper.js`, Playwright) ezen a fejlesztői gépen ki vannak kapcsolva, mert a fejetlen Edge-indítások hibás Windows-bejelentkezéseket okoztak. Lásd a projekt jegyzeteit, mielőtt újra bekapcsolod őket.
 
@@ -65,4 +66,4 @@ A Hungarian-language, Pac-Man themed pinball game for small children, delivered 
 
 Controls: left/right arrow or left/right Ctrl = flippers, Space = launch, P/Esc = pause, M = mute, F = fullscreen. After ten minutes of active play Pacman announces the last ball and says goodbye (`?perc=N` in the URL changes the minutes, `?perc=0` turns it off).
 
-`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. The Hungarian voice in `assets/voice/` is frozen to the published 241 clips (`assets/voice/FROZEN.sha256`, checked by `tests/voice_check.py`); `tools/gen_voice.py` only runs with `--unfreeze-hungarian`. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.
+`docs/index.html` is the published, verified build (its JavaScript is in `verified-src/`); `src/` is a newer working copy with unfinished, unverified quality fixes. The Hungarian voice in `assets/voice/` is frozen to the published 241 clips (`assets/voice/FROZEN.sha256`, checked by `tests/voice_check.py`); for Hungarian `tools/gen_voice.py` only runs with `--unfreeze-hungarian`. An English voice for `?language=en` is being prepared (`ENGLISH-PLAN.md`, not published yet): `tools/gen_voice.py --lang en` builds it from `tools/en/` into `assets/voice_en/`, and `tools/listen.py` writes a page to listen to both languages side by side. Unofficial fan project, not affiliated with Bandai Namco; no license has been granted for the code yet.
